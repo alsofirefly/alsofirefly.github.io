@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客家擂茶與麻糬：文化體驗與教學互動</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #fcfaf2;
+            color: #3d3d3d;
+            overflow-x: hidden;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+        }
+
+        .interactive-card {
+            transition: all 0.3s ease;
+        }
+        .interactive-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(107, 142, 35, 0.15);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-link.active {
+            border-bottom: 4px solid #6b8e23;
+            color: #6b8e23;
+            font-weight: 700;
+        }
+
+        .pinyin {
+            font-size: 0.8rem;
+            color: #8c8c8c;
+            display: block;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        .hakka-pattern {
+            background-image: radial-gradient(#d1e2c4 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .btn-selected {
+            background-color: #6b8e23 !important;
+            color: white !important;
+            border-color: #4a6318 !important;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="hakka-pattern">
+
+<!-- Chosen Palette: Hakka Harmony (Sage Green, Earth Brown, Cream, and Floral Red) -->
+<!-- Application Structure Plan: 
+    1. 歡迎與文化簡介：加入拼音標題，建立文化連結。
+    2. 核心食材庫：使用特大字體與拼音，搭配 Canvas 繪製的模擬照片，強化視覺記憶。
+    3. 工作坊提問練習：練習 A1 關鍵提問句。
+    4. 語法測驗：針對「除了...還...」與「雖然...但是...」進行鞏固。
+    5. 本日體驗分享：設計「V + 起來」句型產生器，並以雷達圖呈現全班體驗回饋。
+-->
+<!-- Visualization & Content Choices: 
+    - 模擬照片 -> Canvas API 繪製 -> 代替外部圖片，呈現擂茶碗與麻糬的視覺。
+    - 食材佔比 -> 環狀圖 (Chart.js) -> 視覺化食材重要性。
+    - 體驗回饋 -> 雷達圖 (Chart.js) -> 總結多維度的感官描述（香、甜、累、軟）。
+    - 句型產生器 -> JS 動態拼接 -> 練習「喝起來、吃起來、做起來」語法。
+-->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+<nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-md z-50">
+    <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
+        <div class="flex items-center">
+            <canvas id="logoIcon" width="40" height="40" class="mr-3"></canvas>
+            <div>
+                <span class="text-xs text-stone-400 block font-bold tracking-tighter">KÈJIĀ LÉICHÁ</span>
+                <span class="text-xl font-black text-stone-800">客家擂茶工作坊</span>
+            </div>
+        </div>
+        <div class="hidden md:flex space-x-6">
+            <button onclick="showSection('intro')" class="nav-link active py-2 px-1">文化介紹</button>
+            <button onclick="showSection('ingredients')" class="nav-link py-2 px-1">認識食材</button>
+            <button onclick="showSection('workshop')" class="nav-link py-2 px-1">對話練習</button>
+            <button onclick="showSection('sharing')" class="nav-link py-2 px-1 text-orange-700">體驗分享</button>
+        </div>
+    </div>
+</nav>
+
+<main class="mt-28 px-4 max-w-6xl mx-auto pb-24">
+
+    <!-- Section: Intro -->
+    <section id="intro-section" class="fade-in">
+        <div class="bg-white rounded-[2rem] p-10 shadow-sm border border-stone-100 text-center">
+            <div class="mb-6">
+                <span class="pinyin text-lg">Kèjiā léichá hé máshǔ</span>
+                <h1 class="text-4xl font-black text-stone-800">客家擂茶和麻糬</h1>
+            </div>
+            <p class="text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed mb-10">
+                擂茶是客家人的傳統點心。我們把食材磨碎，加熱水喝。
+                <br><span class="text-sm text-stone-400 italic">Lei Cha is a traditional Hakka snack. We grind ingredients and add hot water to drink.</span>
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center mt-8">
+                <div class="bg-stone-50 rounded-3xl p-8 border border-stone-200">
+                    <h3 class="text-2xl font-bold mb-4 text-olive-800">
+                        <span class="pinyin">Léichá de zhàopiàn</span>
+                        客家擂茶照片 (Simulation)
+                    </h3>
+                    <canvas id="leichaMainPhoto" width="300" height="200" class="mx-auto rounded-2xl shadow-inner bg-white"></canvas>
+                    <p class="mt-4 text-stone-500 text-sm">這是擂缽 (Léibó) 和擂棍 (Léigùn)</p>
+                </div>
+                <div class="space-y-6 text-left">
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-orange-100 text-orange-700 font-bold p-3 rounded-full">1</div>
+                        <div>
+                            <p class="font-bold text-lg">熱情好客 (Hospitality)</p>
+                            <p class="text-stone-500">客家人用擂茶招待重要的客人。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-green-100 text-green-700 font-bold p-3 rounded-full">2</div>
+                        <div>
+                            <p class="font-bold text-lg">分佈廣泛 (Geography)</p>
+                            <p class="text-stone-500">在廣東、江西、台灣都有擂茶。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Ingredients (Large Fonts) -->
+    <section id="ingredients-section" class="hidden fade-in">
+        <div class="bg-white rounded-[2rem] p-10 shadow-sm">
+            <div class="text-center mb-12">
+                <span class="pinyin text-lg">Rènshí cáiliào</span>
+                <h2 class="text-4xl font-black">認識食材</h2>
+                <p class="text-stone-500 mt-2">點擊卡片聽讀音並看大字</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" id="ingredientGrid">
+                <!-- Ingredients dynamic loading -->
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center bg-stone-50 p-8 rounded-3xl">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">食材比例 (Proportion)</h3>
+                    <div class="chart-container">
+                        <canvas id="ingredientChart"></canvas>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="p-4 bg-white rounded-xl shadow-sm border-l-8 border-green-700">
+                        <span class="pinyin">Cháyè</span>
+                        <p class="text-2xl font-bold">茶葉 (Tea Leaves)</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-sm border-l-8 border-yellow-600">
+                        <span class="pinyin">Huāshēng</span>
+                        <p class="text-2xl font-bold">花生 (Peanut)</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl shadow-sm border-l-8 border-stone-800">
+                        <span class="pinyin">Zhīmá</span>
+                        <p class="text-2xl font-bold">芝麻 (Sesame)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Workshop Simulator -->
+    <section id="workshop-section" class="hidden fade-in">
+        <div class="bg-white rounded-[2rem] p-10 shadow-sm border border-stone-100">
+            <div class="text-center mb-10">
+                <span class="pinyin">Wǒ huì zhǔdòng wèn wèntí</span>
+                <h2 class="text-3xl font-black">我會主動問問題</h2>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="space-y-4">
+                    <p class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-4">點擊你的問題 (Choose Your Question)</p>
+                    <button onclick="simInteraction(1)" class="w-full text-left p-5 rounded-2xl border-2 border-stone-100 hover:border-olive-500 bg-stone-50 transition-all">
+                        <span class="pinyin">Lǎoshī, qǐngwèn zhèshì shénme?</span>
+                        <span class="font-bold block">老師，請問這是什麼？</span>
+                    </button>
+                    <button onclick="simInteraction(2)" class="w-full text-left p-5 rounded-2xl border-2 border-stone-100 hover:border-olive-500 bg-stone-50 transition-all">
+                        <span class="pinyin">Chúle fàng cháyè, hái yào fàng shénme?</span>
+                        <span class="font-bold block">除了放茶葉，還要放什麼？</span>
+                    </button>
+                    <button onclick="simInteraction(3)" class="w-full text-left p-5 rounded-2xl border-2 border-stone-100 hover:border-olive-500 bg-stone-50 transition-all">
+                        <span class="pinyin">Suīrán hěn lèi, dànshì hǎowán ma?</span>
+                        <span class="font-bold block">雖然很累，但是好玩嗎？</span>
+                    </button>
+                </div>
+                <div class="lg:col-span-2 bg-stone-900 rounded-[2rem] p-8 text-white min-h-[400px] flex flex-col justify-end shadow-2xl relative overflow-hidden" id="dialogWindow">
+                    <!-- Dialogue visual effect -->
+                    <div class="absolute top-0 left-0 w-full p-4 bg-stone-800/50 text-stone-400 text-xs text-center">對話視窗 (Dialogue Window)</div>
+                    <div class="text-stone-500 text-center italic my-auto">點擊左側問題開始對話練習...</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Sharing (V+起來) -->
+    <section id="sharing-section" class="hidden fade-in">
+        <div class="bg-white rounded-[2rem] p-10 shadow-sm border border-stone-100">
+            <div class="text-center mb-10">
+                <span class="pinyin text-lg">Běnrì tǐyàn fēnxiǎng</span>
+                <h2 class="text-4xl font-black">本日體驗分享</h2>
+                <p class="text-stone-400 mt-2 italic">Use the sentence builder to describe your experience!</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="bg-stone-50 p-8 rounded-[2.5rem] border border-stone-100">
+                    <h3 class="text-xl font-bold mb-8 flex items-center">
+                        <span class="bg-olive-600 w-2 h-8 mr-4 rounded-full"></span>
+                        句型產生器 (Sentence Builder)
+                    </h3>
+                    
+                    <div class="space-y-8">
+                        <div>
+                            <p class="text-xs font-bold text-stone-400 mb-3 uppercase">1. 對象 (Subject)</p>
+                            <div class="flex flex-wrap gap-3">
+                                <button onclick="setPart('sub', '擂茶', 'Léichá', this)" class="px-5 py-3 rounded-2xl border bg-white text-sm font-bold shadow-sm hover:border-olive-400">擂茶 (Lei Cha)</button>
+                                <button onclick="setPart('sub', '麻糬', 'Máshǔ', this)" class="px-5 py-3 rounded-2xl border bg-white text-sm font-bold shadow-sm hover:border-olive-400">麻糬 (Mochi)</button>
+                                <button onclick="setPart('sub', '做擂茶', 'Zuò léichá', this)" class="px-5 py-3 rounded-2xl border bg-white text-sm font-bold shadow-sm hover:border-olive-400">做擂茶 (Making Lei Cha)</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="text-xs font-bold text-stone-400 mb-3 uppercase">2. 感覺 V+起來 (How it feels...)</p>
+                            <div class="flex flex-wrap gap-3">
+                                <button onclick="setPart('verb', '喝起來', 'hē qǐlái', this)" class="px-5 py-3 rounded-2xl border bg-white text-sm font-bold shadow-sm hover:border-olive-400">喝起來 (Tastes/Drinks...)</button>
+                                <button onclick="setPart('verb', '吃起來', 'chī qǐlái', this)" class="px-5 py-3 rounded-2xl border bg-white text-sm font-bold shadow-sm hover:border-olive-400">吃起來 (Tastes/Eats...)</button>
+                                <button onclick="setPart('verb', '做起來', 'zuò qǐlái', this)" class="px-5 py-3 rounded-2xl border bg-white text-sm font-bold shadow-sm hover:border-olive-400">做起來 (Doing it feels...)</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="text-xs font-bold text-stone-400 mb-3 uppercase">3. 描述 (Adjective)</p>
+                            <div class="flex flex-wrap gap-3">
+                                <button onclick="setPart('adj', '很香', 'hěn xiāng', this)" class="px-5 py-3 rounded-2xl border bg-white text-sm font-bold shadow-sm hover:border-olive-400">很香 (Fragrant)</button>
+                                <button onclick="setPart('adj', '甜甜的', 'tián tián de', this)" class="px-5 py-3 rounded-2xl border bg-white text-sm font-bold shadow-sm hover:border-olive-400">甜甜的 (Sweet)</button>
+                                <button onclick="setPart('adj', '很有趣', 'hěn yǒuqù', this)" class="px-5 py-3 rounded-2xl border bg-white text-sm font-bold shadow-sm hover:border-olive-400">很有趣 (Fun)</button>
+                                <button onclick="setPart('adj', '很累', 'hěn lèi', this)" class="px-5 py-3 rounded-2xl border bg-white text-sm font-bold shadow-sm hover:border-olive-400">很累 (Tiring)</button>
+                            </div>
+                        </div>
+
+                        <div class="mt-10 p-8 bg-white rounded-3xl border-2 border-olive-100 shadow-inner flex flex-col items-center justify-center min-h-[120px]">
+                            <p id="finalPinyin" class="text-olive-400 text-sm italic mb-1"></p>
+                            <p id="finalSentence" class="text-2xl md:text-3xl font-black text-olive-900">請點選上方詞彙...</p>
+                        </div>
+                        <button onclick="submitExperience()" class="w-full bg-stone-800 text-white font-bold py-5 rounded-2xl shadow-lg hover:bg-black transition-all transform active:scale-95">發送我的心得 (Send My Feedback)</button>
+                    </div>
+                </div>
+
+                <div class="flex flex-col justify-center">
+                    <h3 class="text-xl font-bold mb-6 text-center">全班體驗分析 (Class Feedback)</h3>
+                    <div class="chart-container">
+                        <canvas id="classRadarChart"></canvas>
+                    </div>
+                    <div class="mt-10 space-y-4" id="feedbackWall">
+                        <div class="p-4 bg-white rounded-2xl shadow-sm border border-stone-100 fade-in">
+                            <span class="pinyin">Léichá hē qǐlái hěn xiāng!</span>
+                            <p class="font-bold">「擂茶喝起來很香！」</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bg-stone-100 py-12 text-center border-t border-stone-200">
+    <p class="text-sm font-bold text-stone-500">客家文化體驗教材 - TBCL 1-2 A1 輔助工具</p>
+    <p class="text-xs text-stone-400 mt-1 uppercase tracking-widest">Single Page Interactive Application</p>
+</footer>
+
+<script>
+    // State Management
+    let currentData = { sub: '', verb: '', adj: '', subP: '', verbP: '', adjP: '' };
+    let stats = { fragrant: 15, sweet: 10, fun: 20, tired: 12 };
+    let radarChart = null;
+
+    // Navigation
+    function showSection(id) {
+        document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+        document.getElementById(`${id}-section`).classList.remove('hidden');
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        const link = Array.from(document.querySelectorAll('.nav-link')).find(l => l.innerText.includes(id === 'intro' ? '文化' : id === 'ingredients' ? '食材' : id === 'workshop' ? '對話' : '分享'));
+        if(link) link.classList.add('active');
+        if(id === 'sharing') initRadar();
+    }
+
+    // Canvas Graphics
+    function drawAllGraphics() {
+        // Logo
+        const logoCtx = document.getElementById('logoIcon').getContext('2d');
+        logoCtx.fillStyle = '#6b8e23'; logoCtx.beginPath(); logoCtx.arc(20, 20, 18, 0, Math.PI*2); logoCtx.fill();
+        logoCtx.fillStyle = '#fff'; logoCtx.font = 'bold 20px Noto Sans TC'; logoCtx.fillText('擂', 10, 27);
+
+        // Main Photo Simulation (Leicha Bowl)
+        const photoCtx = document.getElementById('leichaMainPhoto').getContext('2d');
+        photoCtx.fillStyle = '#f5f5f5'; photoCtx.fillRect(0,0,300,200);
+        // Draw Bowl
+        photoCtx.fillStyle = '#4a3728'; photoCtx.beginPath(); photoCtx.arc(150, 120, 60, 0, Math.PI, false); photoCtx.fill();
+        // Draw Liquid
+        photoCtx.fillStyle = '#8ca36d'; photoCtx.beginPath(); photoCtx.arc(150, 115, 55, 0, Math.PI, false); photoCtx.fill();
+        // Draw Pestle
+        photoCtx.strokeStyle = '#8b5a2b'; photoCtx.lineWidth = 15; photoCtx.lineCap = 'round';
+        photoCtx.beginPath(); photoCtx.moveTo(220, 40); photoCtx.lineTo(150, 110); photoCtx.stroke();
+    }
+
+    function drawIngredientIcon(canvasId, color) {
+        const ctx = document.getElementById(canvasId).getContext('2d');
+        ctx.fillStyle = color;
+        ctx.beginPath(); ctx.arc(40, 40, 30, 0, Math.PI*2); ctx.fill();
+        ctx.strokeStyle = '#fff'; ctx.lineWidth = 3; ctx.stroke();
+    }
+
+    // Chart.js
+    function initIngredientsChart() {
+        const ctx = document.getElementById('ingredientChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['茶葉', '花生', '芝麻', '其他'],
+                datasets: [{
+                    data: [35, 30, 25, 10],
+                    backgroundColor: ['#2d4a3e', '#d4a373', '#2b2b2b', '#e9edc9'],
+                    borderWidth: 0
+                }]
+            },
+            options: { maintainAspectRatio: false, cutout: '75%', plugins: { legend: { position: 'bottom' } } }
+        });
+    }
+
+    function initRadar() {
+        if(radarChart) radarChart.destroy();
+        const ctx = document.getElementById('classRadarChart').getContext('2d');
+        radarChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['香 (Fragrant)', '甜 (Sweet)', '趣 (Fun)', '累 (Tired)'],
+                datasets: [{
+                    label: '本班評價',
+                    data: [stats.fragrant, stats.sweet, stats.fun, stats.tired],
+                    backgroundColor: 'rgba(107, 142, 35, 0.2)',
+                    borderColor: '#6b8e23',
+                    pointBackgroundColor: '#6b8e23'
+                }]
+            },
+            options: { maintainAspectRatio: false, scales: { r: { beginAtZero: true } } }
+        });
+    }
+
+    // Ingredients Logic
+    function loadIngredients() {
+        const items = [
+            { n: '茶葉', p: 'cháyè', e: 'Tea Leaves', c: '#2d4a3e' },
+            { n: '花生', p: 'huāshēng', e: 'Peanut', c: '#d4a373' },
+            { n: '芝麻', p: 'zhīmá', e: 'Sesame', c: '#2b2b2b' },
+            { n: '麻糬', p: 'máshǔ', e: 'Mochi', c: '#f5f5dc' }
+        ];
+        const grid = document.getElementById('ingredientGrid');
+        items.forEach((item, i) => {
+            const card = document.createElement('div');
+            card.className = "interactive-card bg-white p-8 rounded-[2rem] shadow-sm border border-stone-100 text-center cursor-pointer";
+            card.innerHTML = `
+                <canvas id="ingCan${i}" width="80" height="80" class="mx-auto mb-6"></canvas>
+                <span class="pinyin text-base font-bold">${item.p}</span>
+                <h4 class="text-4xl font-black mb-2">${item.n}</h4>
+                <p class="text-stone-400 text-sm font-bold uppercase tracking-widest">${item.e}</p>
+            `;
+            grid.appendChild(card);
+            drawIngredientIcon(`ingCan${i}`, item.c);
+        });
+    }
+
+    // Workshop Dialog
+    function simInteraction(step) {
+        const win = document.getElementById('dialogWindow');
+        win.innerHTML = '';
+        const dialogues = {
+            1: { q: "老師，請問這是什麼？", qp: "Lǎoshī, qǐngwèn zhèshì shénme?", a: "這是茶葉，也是擂茶最重要的材料。", ap: "Zhè shì cháyè, yě shì léichá zuì zhòngyào de cáiliào." },
+            2: { q: "除了放茶葉，還要放什麼？", qp: "Chúle fàng cháyè, hái yào fàng shénme?", a: "除了茶葉，還要放花生、芝麻，喝起來才會香。", ap: "Chúle cháyè, hái yào fàng huāshēng, zhīmá, hē qǐlái cáihuì xiāng." },
+            3: { q: "雖然很累，但是好玩嗎？", qp: "Suīrán hěn lèi, dànshì hǎowán ma?", a: "雖然磨擂茶很累，但是很有趣，對不對？", ap: "Suīrán mó léichá hěn lèi, dànshì hěn yǒuqù, duì bú duì?" }
+        };
+        const d = dialogues[step];
+
+        // User
+        const u = document.createElement('div');
+        u.className = "bg-stone-700 p-5 rounded-3xl ml-auto max-w-[80%] mb-4 fade-in";
+        u.innerHTML = `<span class="text-[10px] text-stone-400 block mb-1">STUDENT</span><span class="text-xs text-stone-400 block">${d.qp}</span><span class="font-bold">${d.q}</span>`;
+        win.appendChild(u);
+
+        // Teacher
+        setTimeout(() => {
+            const t = document.createElement('div');
+            t.className = "bg-olive-800 p-5 rounded-3xl mr-auto max-w-[80%] mb-4 border-l-4 border-olive-400 fade-in";
+            t.innerHTML = `<span class="text-[10px] text-olive-300 block mb-1">TEACHER</span><span class="text-xs text-olive-300 block">${d.ap}</span><span class="font-bold">${d.a}</span>`;
+            win.appendChild(t);
+        }, 600);
+    }
+
+    // Sharing Logic
+    function setPart(type, val, pin, btn) {
+        currentData[type] = val;
+        currentData[type + 'P'] = pin;
+        btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('btn-selected'));
+        btn.classList.add('btn-selected');
+        updatePreview();
+    }
+
+    function updatePreview() {
+        const text = document.getElementById('finalSentence');
+        const pin = document.getElementById('finalPinyin');
+        if(currentData.sub && currentData.verb && currentData.adj) {
+            text.innerText = `${currentData.sub}${currentData.verb}${currentData.adj}。`;
+            pin.innerText = `${currentData.subP} ${currentData.verbP} ${currentData.adjP}.`;
+        }
+    }
+
+    function submitExperience() {
+        if(!currentData.sub || !currentData.verb || !currentData.adj) {
+            alert("請先完成句子組合！ (Please complete the sentence!)");
+            return;
+        }
+        // Mock Update
+        if(currentData.adj === '很香') stats.fragrant += 2;
+        if(currentData.adj === '甜甜的') stats.sweet += 2;
+        if(currentData.adj === '很有趣') stats.fun += 2;
+        if(currentData.adj === '很累') stats.tired += 2;
+        initRadar();
+
+        // Wall
+        const wall = document.getElementById('feedbackWall');
+        const post = document.createElement('div');
+        post.className = "p-4 bg-white rounded-2xl shadow-md border-l-4 border-olive-500 fade-in";
+        post.innerHTML = `<span class="pinyin">${currentData.subP} ${currentData.verbP} ${currentData.adjP}!</span><p class="font-bold">「${currentData.sub}${currentData.verb}${currentData.adj}！」</p>`;
+        wall.prepend(post);
+        alert("分享成功！ (Shared successfully!)");
+    }
+
+    window.onload = () => {
+        drawAllGraphics();
+        loadIngredients();
+        initIngredientsChart();
+    };
+</script>
+</body>
+</html>
