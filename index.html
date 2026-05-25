@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I-Ying Cheng | Professional Mandarin Chinese Teacher</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans TC & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons (Via FontAwesome's public CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        jade: {
+                            50: '#f2f8f6',
+                            100: '#e1f0ec',
+                            600: '#2d6a5d',
+                            700: '#235349',
+                            800: '#1c423a',
+                        },
+                        amber: {
+                            500: '#d97706',
+                            600: '#b45309',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Noto Sans TC', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .chinese-pattern {
+            background-color: #fcfbf7;
+            background-image: radial-gradient(#2d6a5d 0.5px, transparent 0.5px), radial-gradient(#2d6a5d 0.5px, #fcfbf7 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.05;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-[#FAF9F5] leading-relaxed">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-jade-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-jade-600 flex items-center justify-center text-white font-serif text-xl font-bold">
+                        鄭
+                    </div>
+                    <div>
+                        <span class="font-serif text-xl font-bold text-jade-700 tracking-wide">I-Ying Cheng</span>
+                        <p class="text-xs text-amber-600 tracking-wider font-semibold uppercase">Mandarin Educator</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center space-x-8 font-medium">
+                    <a href="#home" class="text-gray-600 hover:text-jade-600 transition-colors">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-jade-600 transition-colors">About Me</a>
+                    <a href="#courses" class="text-gray-600 hover:text-jade-600 transition-colors">Courses</a>
+                    <a href="#resources" class="text-gray-600 hover:text-jade-600 transition-colors">Free Resources</a>
+                    <a href="#testimonials" class="text-gray-600 hover:text-jade-600 transition-colors">Testimonials</a>
+                    <a href="#contact" class="bg-jade-600 hover:bg-jade-700 text-white px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">Book a Trial Lesson</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-btn" class="text-jade-700 hover:text-jade-600 focus:outline-none" aria-label="Toggle navigation">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-jade-100 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="block text-gray-700 hover:text-jade-600 font-medium py-2 border-b border-gray-100">Home</a>
+            <a href="#about" class="block text-gray-700 hover:text-jade-600 font-medium py-2 border-b border-gray-100">About Me</a>
+            <a href="#courses" class="block text-gray-700 hover:text-jade-600 font-medium py-2 border-b border-gray-100">Courses</a>
+            <a href="#resources" class="block text-gray-700 hover:text-jade-600 font-medium py-2 border-b border-gray-100">Free Resources</a>
+            <a href="#testimonials" class="block text-gray-700 hover:text-jade-600 font-medium py-2 border-b border-gray-100">Testimonials</a>
+            <a href="#contact" class="block bg-jade-600 text-white text-center py-3 rounded-xl font-medium shadow-md">Book a Trial Lesson</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative pt-32 pb-20 md:py-40 overflow-hidden">
+        <!-- Accent circles -->
+        <div class="absolute top-1/4 -left-12 w-64 h-64 bg-jade-100/40 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-amber-50/50 rounded-full blur-3xl -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-jade-50 border border-jade-100 px-4 py-2 rounded-full">
+                        <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="text-xs font-semibold text-jade-700 uppercase tracking-widest">Now Booking Students • Online & In-person</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-gray-900 leading-tight">
+                        Master Mandarin with <br class="hidden sm:inline">
+                        <span class="text-jade-600 relative inline-block">
+                            I-Ying Cheng
+                            <span class="absolute left-0 bottom-1 w-full h-2 bg-amber-500/20 rounded-md"></span>
+                        </span>
+                        <span class="font-normal block text-xl sm:text-2xl font-sans mt-3 text-gray-500">
+                            Customized Chinese Lessons for Your Success (鄭亦瑩老師)
+                        </span>
+                    </h1>
+                    
+                    <p class="text-lg text-gray-600 max-w-xl mx-auto lg:mx-0">
+                        A certified Mandarin educator with over 7 years of global teaching experience. Transform Chinese characters from confusing symbols into an exciting language adventure tailored to your personal goals.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#contact" class="bg-jade-600 hover:bg-jade-700 text-white font-semibold text-center px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+                            Book a Trial Lesson (Only $10)
+                        </a>
+                        <a href="#courses" class="border border-jade-600 text-jade-700 hover:bg-jade-50 font-semibold text-center px-8 py-4 rounded-full transition-all">
+                            Explore Courses
+                        </a>
+                    </div>
+
+                    <!-- Trust Stats -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-jade-100 max-w-md mx-auto lg:mx-0">
+                        <div>
+                            <p class="text-3xl font-bold text-jade-700">7+</p>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider">Years Experience</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-jade-700">500+</p>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider">Happy Students</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-jade-700">99%</p>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider">Success Rate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-80 h-80 sm:w-96 sm:h-96">
+                        <!-- Background Golden Circle -->
+                        <div class="absolute inset-4 rounded-full border-4 border-amber-500/20 border-dashed animate-[spin_60s_linear_infinite]"></div>
+                        <!-- Inner Jade Background -->
+                        <div class="absolute inset-8 rounded-full bg-gradient-to-tr from-jade-600 to-jade-500 shadow-2xl flex items-center justify-center overflow-hidden">
+                            <!-- Fallback/Self-Designed Placeholder Avatar -->
+                            <div class="text-center p-8 text-white">
+                                <span class="font-serif text-8xl block mb-2 opacity-95 animate-bounce">鄭</span>
+                                <h3 class="font-serif text-2xl font-semibold">I-Ying Cheng</h3>
+                                <p class="text-sm text-jade-100">Professional Mandarin Teacher</p>
+                                <p class="text-xs text-amber-400 mt-2">✨ TCSOL Certified Educator ✨</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Badges -->
+                        <div class="absolute -top-2 left-6 bg-white p-3 rounded-2xl shadow-lg border border-jade-100 flex items-center space-x-2">
+                            <span class="text-2xl">👩‍🏫</span>
+                            <div>
+                                <p class="text-[10px] uppercase text-gray-400 font-bold tracking-wider">Credentials</p>
+                                <p class="text-xs font-bold text-jade-700">TCSOL Certified</p>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute bottom-10 -right-6 bg-white p-3 rounded-2xl shadow-lg border border-jade-100 flex items-center space-x-2">
+                            <span class="text-2xl">🗣️</span>
+                            <div>
+                                <p class="text-[10px] uppercase text-gray-400 font-bold tracking-wider">Accents</p>
+                                <p class="text-xs font-bold text-jade-700">Standard Pinyin & Bopomofo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BIO / TEACHING PHILOSOPHY -->
+    <section id="about" class="py-20 bg-white relative">
+        <div class="absolute inset-0 chinese-pattern"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="space-y-6">
+                    <span class="text-sm font-semibold tracking-widest uppercase text-amber-600">Meet Your Teacher</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900">
+                        Empathetic, Fun, and Result-Oriented Mandarin Teaching
+                    </h2>
+                    <p class="text-gray-600 text-lg">
+                        Hello! I am I-Ying Cheng (鄭亦瑩). I believe that learning a language should never be about memorizing tedious lists of dry characters. It is about connection, understanding cultures, and finding your own voice.
+                    </p>
+                    <p class="text-gray-600">
+                        Whether you are a complete beginner trying to grasp tones for the first time, a business professional looking to communicate in high-stakes environments, or looking for AP Chinese prep, I design customized paths that align directly with your lifestyle.
+                    </p>
+                    
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-start space-x-3">
+                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-jade-50 flex items-center justify-center text-jade-600">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <p class="text-gray-700"><strong class="text-jade-700">Bilingual Teaching:</strong> Clear explanations in English/Mandarin for all grammar complexities.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-jade-50 flex items-center justify-center text-jade-600">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <p class="text-gray-700"><strong class="text-jade-700">Customized Materials:</strong> Handouts, worksheets, and interactive flashcards crafted by me for you.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-jade-50 flex items-center justify-center text-jade-600">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <p class="text-gray-700"><strong class="text-jade-700">Culture Integration:</strong> Understand the culture, idioms, and historical context of the words you speak.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Grid Box -->
+                <div class="bg-jade-50 rounded-3xl p-8 sm:p-10 border border-jade-100 shadow-inner">
+                    <h3 class="font-serif text-2xl font-semibold text-jade-800 mb-6 text-center">My Core Teaching Methods</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-white p-5 rounded-2xl border border-jade-100 shadow-sm">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600 mb-3 text-lg font-bold">1</div>
+                            <h4 class="font-bold text-gray-900 mb-1">Interactive Tones Clinic</h4>
+                            <p class="text-xs text-gray-500">Perfect your accent, cadence, and tone changes using physical responses and visual pitch lines.</p>
+                        </div>
+                        
+                        <div class="bg-white p-5 rounded-2xl border border-jade-100 shadow-sm">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600 mb-3 text-lg font-bold">2</div>
+                            <h4 class="font-bold text-gray-900 mb-1">Scenario-Based Speech</h4>
+                            <p class="text-xs text-gray-500">Dive into roleplaying real-world environments like booking a taxi, shopping, or signing a contract.</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-jade-100 shadow-sm">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600 mb-3 text-lg font-bold">3</div>
+                            <h4 class="font-bold text-gray-900 mb-1">Character Etymology</h4>
+                            <p class="text-xs text-gray-500">Never memorize blindly. Learn radicals and the structural story behind each Hanzi character.</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-jade-100 shadow-sm">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600 mb-3 text-lg font-bold">4</div>
+                            <h4 class="font-bold text-gray-900 mb-1">Spaced Repetition Work</h4>
+                            <p class="text-xs text-gray-500">Utilize customized flashcards tailored after every single lesson to combat the forgetting curve.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES SECTION -->
+    <section id="courses" class="py-20 bg-jade-50/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-sm font-semibold tracking-widest uppercase text-jade-700">Learning Programs</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900">Choose Your Perfect Path</h2>
+                <p class="text-gray-600">Courses tailored to fit any skill level, schedule, and age group. All classes include personal feedback files, homework checking, and flashcard sets.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Course Card 1 -->
+                <div class="bg-white rounded-3xl border border-jade-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+                    <div class="p-8 flex-grow">
+                        <div class="w-12 h-12 rounded-2xl bg-teal-50 flex items-center justify-center text-teal-600 text-xl mb-6">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-950 mb-2">Mandarin for Beginners</h3>
+                        <p class="text-gray-500 text-sm mb-4">No prior experience needed. Start with standard pronunciation, Hanyu Pinyin/Zhuyin, basic vocabulary, and everyday conversations.</p>
+                        
+                        <div class="space-y-2 border-t border-gray-100 pt-4">
+                            <div class="flex items-center text-xs text-gray-600">
+                                <i class="fa-solid fa-circle-play text-jade-600 mr-2"></i>
+                                <span>Learn Tone rules (1st to Neutral)</span>
+                            </div>
+                            <div class="flex items-center text-xs text-gray-600">
+                                <i class="fa-solid fa-circle-play text-jade-600 mr-2"></i>
+                                <span>Hold basic introductory chats</span>
+                            </div>
+                            <div class="flex items-center text-xs text-gray-600">
+                                <i class="fa-solid fa-circle-play text-jade-600 mr-2"></i>
+                                <span>Master 150 essential vocabulary words</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 bg-[#FAF9F5] border-t border-jade-50 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-400 block font-semibold uppercase">Pricing Starts At</span>
+                            <span class="text-xl font-extrabold text-jade-800">$35<span class="text-xs font-normal text-gray-500"> / hr</span></span>
+                        </div>
+                        <a href="#contact" class="text-xs font-bold text-jade-700 hover:text-jade-800 flex items-center space-x-1">
+                            <span>Get Started</span> <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="bg-white rounded-3xl border-2 border-jade-600 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col h-full relative">
+                    <span class="absolute top-4 right-4 bg-amber-500 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">Most Popular</span>
+                    <div class="p-8 flex-grow">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600 text-xl mb-6">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-950 mb-2">Conversational & Business</h3>
+                        <p class="text-gray-500 text-sm mb-4">Focused on expanding fluency and speaking natural Mandarin. Tailored for professionals expanding into Chinese markets or people with dual-language families.</p>
+                        
+                        <div class="space-y-2 border-t border-gray-100 pt-4">
+                            <div class="flex items-center text-xs text-gray-600">
+                                <i class="fa-solid fa-circle-play text-jade-600 mr-2"></i>
+                                <span>E-mail & formal phone etiquette</span>
+                            </div>
+                            <div class="flex items-center text-xs text-gray-600">
+                                <i class="fa-solid fa-circle-play text-jade-600 mr-2"></i>
+                                <span>Presentations and negotiations</span>
+                            </div>
+                            <div class="flex items-center text-xs text-gray-600">
+                                <i class="fa-solid fa-circle-play text-jade-600 mr-2"></i>
+                                <span>Advanced idioms (Chengyu) analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 bg-jade-50/50 border-t border-jade-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-400 block font-semibold uppercase">Pricing Starts At</span>
+                            <span class="text-xl font-extrabold text-jade-800">$40<span class="text-xs font-normal text-gray-500"> / hr</span></span>
+                        </div>
+                        <a href="#contact" class="text-xs font-bold text-jade-700 hover:text-jade-800 flex items-center space-x-1">
+                            <span>Get Started</span> <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="bg-white rounded-3xl border border-jade-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+                    <div class="p-8 flex-grow">
+                        <div class="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600 text-xl mb-6">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-950 mb-2">TOCFL & HSK Exam Prep</h3>
+                        <p class="text-gray-500 text-sm mb-4">Highly targeted curriculum aimed at securing perfect scores on standardized Mandarin tests. Extensive drills on listening, reading, writing, and speaking.</p>
+                        
+                        <div class="space-y-2 border-t border-gray-100 pt-4">
+                            <div class="flex items-center text-xs text-gray-600">
+                                <i class="fa-solid fa-circle-play text-jade-600 mr-2"></i>
+                                <span>Mock tests with strict timer analysis</span>
+                            </div>
+                            <div class="flex items-center text-xs text-gray-600">
+                                <i class="fa-solid fa-circle-play text-jade-600 mr-2"></i>
+                                <span>Complex grammar logic hacks</span>
+                            </div>
+                            <div class="flex items-center text-xs text-gray-600">
+                                <i class="fa-solid fa-circle-play text-jade-600 mr-2"></i>
+                                <span>Essay feedback and vocabulary boost</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 bg-[#FAF9F5] border-t border-jade-50 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-400 block font-semibold uppercase">Pricing Starts At</span>
+                            <span class="text-xl font-extrabold text-jade-800">$45<span class="text-xs font-normal text-gray-500"> / hr</span></span>
+                        </div>
+                        <a href="#contact" class="text-xs font-bold text-jade-700 hover:text-jade-800 flex items-center space-x-1">
+                            <span>Get Started</span> <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE MANDARIN LEARNING RESOURCES -->
+    <section id="resources" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-sm font-semibold tracking-widest uppercase text-amber-600">Interactive Learning</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900">Try Your First Mandarin Word Right Now</h2>
+                <p class="text-gray-600">Learning characters doesn't have to be intimidating! Use our interactive tool below to learn the structure, traditional vs simplified writing, and core meaning of helpful phrases.</p>
+            </div>
+
+            <!-- Interactive App Panel -->
+            <div class="bg-jade-50 rounded-3xl p-6 sm:p-10 border border-jade-100 shadow-xl max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6 pb-6 border-b border-jade-100">
+                    <span class="text-sm font-bold text-jade-700 tracking-wide uppercase"><i class="fa-solid fa-lightbulb mr-1"></i> Topic: Essential Travel & Everyday Expressions</span>
+                    <div class="flex bg-white rounded-full p-1 border border-jade-100 shadow-sm" id="char-toggle-group">
+                        <button onclick="toggleCharacterSystem('traditional')" id="btn-trad" class="px-4 py-2 rounded-full text-xs font-bold transition-all bg-jade-600 text-white shadow-sm">Traditional</button>
+                        <button onclick="toggleCharacterSystem('simplified')" id="btn-simp" class="px-4 py-2 rounded-full text-xs font-bold text-gray-600 transition-all hover:text-jade-600">Simplified</button>
+                    </div>
+                </div>
+
+                <!-- Word display widget -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pt-8 items-center">
+                    <!-- Left: Word Selection -->
+                    <div class="md:col-span-5 space-y-3" id="word-selector-panel">
+                        <button onclick="selectWord(0)" class="w-full text-left p-4 rounded-2xl bg-white border border-jade-200 shadow-sm flex justify-between items-center transition-all hover:bg-jade-50 border-l-4 border-l-amber-500 active-word-btn">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Hello / Friendly Greeting</h4>
+                                <p class="text-xs text-gray-400">Nǐ hǎo</p>
+                            </div>
+                            <span class="font-serif text-xl font-bold text-jade-600" data-trad="你好" data-simp="你好">你好</span>
+                        </button>
+                        <button onclick="selectWord(1)" class="w-full text-left p-4 rounded-2xl bg-white border border-transparent shadow-sm flex justify-between items-center transition-all hover:bg-jade-50 hover:border-jade-200">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Thank You (Expression)</h4>
+                                <p class="text-xs text-gray-400">Xièxie</p>
+                            </div>
+                            <span class="font-serif text-xl font-bold text-jade-600" data-trad="謝謝" data-simp="谢谢">謝謝</span>
+                        </button>
+                        <button onclick="selectWord(2)" class="w-full text-left p-4 rounded-2xl bg-white border border-transparent shadow-sm flex justify-between items-center transition-all hover:bg-jade-50 hover:border-jade-200">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">No Problem / You're Welcome</h4>
+                                <p class="text-xs text-gray-400">Méi guānxi</p>
+                            </div>
+                            <span class="font-serif text-xl font-bold text-jade-600" data-trad="沒關係" data-simp="没关系">沒關係</span>
+                        </button>
+                        <button onclick="selectWord(3)" class="w-full text-left p-4 rounded-2xl bg-white border border-transparent shadow-sm flex justify-between items-center transition-all hover:bg-jade-50 hover:border-jade-200">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Goodbye (Parting words)</h4>
+                                <p class="text-xs text-gray-400">Zàijiàn</p>
+                            </div>
+                            <span class="font-serif text-xl font-bold text-jade-600" data-trad="再見" data-simp="再见">再見</span>
+                        </button>
+                    </div>
+
+                    <!-- Right: Large Flashcard Display -->
+                    <div class="md:col-span-7 bg-white rounded-3xl p-8 border border-jade-100 shadow-md text-center space-y-6 relative overflow-hidden">
+                        <div class="absolute -top-10 -right-10 w-24 h-24 bg-amber-500/5 rounded-full"></div>
+                        <div class="absolute -bottom-10 -left-10 w-24 h-24 bg-jade-600/5 rounded-full"></div>
+                        
+                        <!-- Big Chinese Word Display -->
+                        <div>
+                            <span id="big-char" class="font-serif text-7xl sm:text-8xl text-jade-800 tracking-wider font-bold select-none">
+                                你好
+                            </span>
+                            <p id="big-pinyin" class="text-lg text-amber-600 font-semibold tracking-wide mt-3">
+                                Nǐ hǎo
+                            </p>
+                        </div>
+
+                        <!-- Meaning & Literal Translation -->
+                        <div class="bg-jade-50/50 rounded-2xl p-4 border border-jade-50 max-w-sm mx-auto">
+                            <span class="text-[10px] uppercase text-gray-400 tracking-widest font-bold">English Meaning</span>
+                            <h5 id="word-meaning" class="text-lg font-bold text-gray-900">Hello (Literally: "You Good")</h5>
+                        </div>
+
+                        <!-- Mini Pronunciation Assist Tip -->
+                        <div class="text-xs text-gray-500 max-w-sm mx-auto">
+                            <span class="font-bold text-jade-700">Pronunciation Tip:</span> <span id="pronounce-tip">Both characters are in the 3rd tone (dipping). When two 3rd tones sit next to each other, the first automatically changes to a 2nd rising tone.</span>
+                        </div>
+
+                        <!-- Virtual Speaker Trigger Button -->
+                        <div class="pt-2">
+                            <button onclick="speakSelectedWord()" class="inline-flex items-center space-x-2 bg-jade-600 hover:bg-jade-700 text-white font-semibold text-xs px-5 py-3 rounded-full shadow-sm hover:shadow transition-all">
+                                <i class="fa-solid fa-volume-high text-sm"></i>
+                                <span>Hear Pronunciation</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Classroom Preview Alert -->
+                <div class="mt-8 bg-amber-50 rounded-2xl p-4 border border-amber-100 flex items-start space-x-3">
+                    <span class="text-lg">💡</span>
+                    <p class="text-xs text-amber-800 leading-relaxed">
+                        <strong>Want to master complex accents?</strong> In my customized lessons, we work with a dedicated, real-time shared virtual whiteboard and interactive audio analysis, so you understand correct mouth shapes and pitch paths.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials" class="py-20 bg-[#FAF9F5] border-t border-b border-jade-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-sm font-semibold tracking-widest uppercase text-jade-700">Student Stories</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900">What Our Global Students Say</h2>
+                <p class="text-gray-600">Read verified student feedback from corporate professionals, university students, and language lovers alike.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-3xl border border-jade-100 shadow-sm relative">
+                    <div class="flex items-center space-x-1 text-amber-500 text-xs mb-6">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 text-sm italic mb-6 leading-relaxed">
+                        "I-Ying's patience is infinite. I was extremely nervous about speaking tones. She designed custom audio logs for me to listen to on my drive to work, and in 3 months, I was holding business meetings with my partners in Taipei without anxiety."
+                    </p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center font-bold text-indigo-700 text-sm">
+                            SK
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-900">Satoshi Kobayashi</h4>
+                            <p class="text-[10px] text-gray-400 uppercase font-semibold">Business Director, Tech</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-3xl border border-jade-100 shadow-sm relative">
+                    <div class="flex items-center space-x-1 text-amber-500 text-xs mb-6">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 text-sm italic mb-6 leading-relaxed">
+                        "As a university student prepping for TOCFL Level 4, I was feeling overwhelmed. I-Ying reorganized all my grammar into a clear, visual grid chart and corrected my written essays weekly. I passed on my first try with a higher score than expected!"
+                    </p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center font-bold text-amber-700 text-sm">
+                            EH
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-900">Emma Harrison</h4>
+                            <p class="text-[10px] text-gray-400 uppercase font-semibold">Linguistics Student, UK</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-3xl border border-jade-100 shadow-sm relative">
+                    <div class="flex items-center space-x-1 text-amber-500 text-xs mb-6">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 text-sm italic mb-6 leading-relaxed">
+                        "I-Ying does not just teach words, she teaches culture. We explore classical phrases, beautiful idioms, and she explains the historic roots of traditional characters. This makes my Mandarin lessons the absolute highlight of my busy week!"
+                    </p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center font-bold text-emerald-700 text-sm">
+                            JD
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-900">Jean-Dominique</h4>
+                            <p class="text-[10px] text-gray-400 uppercase font-semibold">Artist & Explorer, France</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / BOOKING FORM -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Info column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-sm font-semibold tracking-widest uppercase text-amber-600">Start Your Journey</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900">Let's Design Your Custom Lesson Plan</h2>
+                    <p class="text-gray-600">
+                        Have a question, specific business target, or looking to schedule an introductory $10 trial session? Drop a message below and I'll get back to you within 24 hours with a suggested roadmap.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-jade-50 flex items-center justify-center text-jade-600">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Email</p>
+                                <a href="mailto:iying.cheng.mandarin@gmail.com" class="text-sm font-semibold hover:text-jade-600 transition-colors">iying.cheng.mandarin@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-jade-50 flex items-center justify-center text-jade-600">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Timezone & Availability</p>
+                                <p class="text-sm font-semibold">GMT+8 (Taipei Time) • Highly Flexible Booking</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-jade-50 flex items-center justify-center text-jade-600">
+                                <i class="fa-solid fa-display"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Virtual Platforms</p>
+                                <p class="text-sm font-semibold">Zoom, Skype, Google Meet, WeChat</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <div class="p-4 bg-jade-50 rounded-2xl border border-jade-100 flex items-start space-x-3">
+                            <span class="text-lg">🔒</span>
+                            <p class="text-xs text-gray-500 leading-relaxed">
+                                <strong>Safety Guarantee:</strong> I value your privacy. Your personal information is solely used to establish contact with you for teaching. No spam ever.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Column -->
+                <div class="lg:col-span-7 bg-[#FAF9F5] rounded-3xl p-8 sm:p-10 border border-jade-100 shadow-md">
+                    <h3 class="font-serif text-2xl font-semibold text-gray-950 mb-6">Inquire About Lessons</h3>
+                    
+                    <form id="booking-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Full Name</label>
+                                <input type="text" id="name" required class="w-full bg-white border border-jade-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-jade-600/50" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Email Address</label>
+                                <input type="email" id="email" required class="w-full bg-white border border-jade-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-jade-600/50" placeholder="john@example.com">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="level" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Your Mandarin Level</label>
+                                <select id="level" class="w-full bg-white border border-jade-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-jade-600/50">
+                                    <option value="beginner">Absolute Beginner</option>
+                                    <option value="elementary">Elementary</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="advanced">Advanced</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="goal" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Primary Goal</label>
+                                <select id="goal" class="w-full bg-white border border-jade-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-jade-600/50">
+                                    <option value="conversation">Conversational Fluency</option>
+                                    <option value="business">Business / Career Needs</option>
+                                    <option value="academic">HSK / TOCFL Exam Prep</option>
+                                    <option value="culture">Interest in Chinese Culture</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Tell me about yourself</label>
+                            <textarea id="message" rows="4" required class="w-full bg-white border border-jade-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-jade-600/50" placeholder="Let me know your target, any previous Chinese learning experience, or your current schedule limitations..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-jade-600 hover:bg-jade-700 text-white font-semibold text-center py-4 rounded-xl shadow-md transition-all hover:shadow-lg">
+                            Send Booking Inquiry
+                        </button>
+                    </form>
+
+                    <!-- Custom notification area (replacing alerts) -->
+                    <div id="form-notification" class="hidden mt-4 p-4 rounded-xl text-sm font-semibold"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-jade-800 text-white py-12 border-t border-jade-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pb-8 border-b border-jade-700">
+                
+                <div class="md:col-span-5 text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start space-x-3 mb-2">
+                        <div class="w-8 h-8 rounded-full bg-white text-jade-700 flex items-center justify-center font-serif font-bold text-lg">
+                            鄭
+                        </div>
+                        <span class="font-serif text-lg font-bold tracking-wide">I-Ying Cheng</span>
+                    </div>
+                    <p class="text-xs text-jade-100/70 max-w-sm">Professional TCSOL certified Mandarin teacher delivering custom-tailored virtual language experiences globally.</p>
+                </div>
+
+                <div class="md:col-span-4 flex justify-center space-x-6">
+                    <a href="#about" class="text-xs text-jade-100/80 hover:text-white transition-colors">About</a>
+                    <a href="#courses" class="text-xs text-jade-100/80 hover:text-white transition-colors">Courses</a>
+                    <a href="#resources" class="text-xs text-jade-100/80 hover:text-white transition-colors">Practice</a>
+                    <a href="#testimonials" class="text-xs text-jade-100/80 hover:text-white transition-colors">Testimonials</a>
+                </div>
+
+                <div class="md:col-span-3 flex justify-center md:justify-end space-x-4">
+                    <a href="#" class="w-8 h-8 rounded-full bg-jade-700 hover:bg-amber-500 flex items-center justify-center text-white text-sm transition-all" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-jade-700 hover:bg-amber-500 flex items-center justify-center text-white text-sm transition-all" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-jade-700 hover:bg-amber-500 flex items-center justify-center text-white text-sm transition-all" aria-label="WeChat"><i class="fa-brands fa-weixin"></i></a>
+                </div>
+
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-between items-center pt-8 text-[11px] text-jade-200/50 space-y-4 sm:space-y-0">
+                <p>© 2026 I-Ying Cheng Mandarin Studio. All Rights Reserved.</p>
+                <p>Designed with ❤️ for global language connection.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // Toggle mobile menu
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Hide mobile menu on link clicks
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Interactive Resources: Data
+        const resourcesData = [
+            {
+                pinyin: "Nǐ hǎo",
+                trad: "你好",
+                simp: "你好",
+                meaning: "Hello (Literally: 'You Good')",
+                tip: "Both characters are in the 3rd tone (dipping). When two 3rd tones sit next to each other, the first automatically changes to a 2nd rising tone."
+            },
+            {
+                pinyin: "Xièxie",
+                trad: "謝謝",
+                simp: "谢谢",
+                meaning: "Thank You",
+                tip: "The first syllable is the 4th falling tone (sharp drop). The second is a neutral tone, spoken with a softer, shorter release."
+            },
+            {
+                pinyin: "Méi guānxi",
+                trad: "沒關係",
+                simp: "没关系",
+                meaning: "No Problem / You're Welcome",
+                tip: "Literally means 'has no relation'. Useful answer to 'sorry' or to politely wave off gratitude."
+            },
+            {
+                pinyin: "Zàijiàn",
+                trad: "再見",
+                simp: "再见",
+                meaning: "Goodbye",
+                tip: "Both are 4th falling tones. 'Zài' means again, 'Jiàn' means to see. So it literally translates to 'See you again'."
+            }
+        ];
+
+        let selectedIndex = 0;
+        let selectedSystem = "traditional"; // traditional or simplified
+
+        // Handle toggling character standard
+        function toggleCharacterSystem(system) {
+            selectedSystem = system;
+            
+            const btnTrad = document.getElementById('btn-trad');
+            const btnSimp = document.getElementById('btn-simp');
+
+            if (system === 'traditional') {
+                btnTrad.className = "px-4 py-2 rounded-full text-xs font-bold transition-all bg-jade-600 text-white shadow-sm";
+                btnSimp.className = "px-4 py-2 rounded-full text-xs font-bold text-gray-600 transition-all hover:text-jade-600";
+            } else {
+                btnSimp.className = "px-4 py-2 rounded-full text-xs font-bold transition-all bg-jade-600 text-white shadow-sm";
+                btnTrad.className = "px-4 py-2 rounded-full text-xs font-bold text-gray-600 transition-all hover:text-jade-600";
+            }
+
+            // Update selectors
+            const buttons = document.querySelectorAll('#word-selector-panel button');
+            buttons.forEach((btn, idx) => {
+                const textSpan = btn.querySelector('span');
+                const word = resourcesData[idx];
+                textSpan.textContent = system === 'traditional' ? word.trad : word.simp;
+            });
+
+            // Update main big card
+            updateCardDisplay();
+        }
+
+        // Handle selecting word
+        function selectWord(index) {
+            selectedIndex = index;
+            
+            // Toggle highlight styles on button panel
+            const buttons = document.querySelectorAll('#word-selector-panel button');
+            buttons.forEach((btn, idx) => {
+                if (idx === index) {
+                    btn.className = "w-full text-left p-4 rounded-2xl bg-white border border-jade-200 shadow-sm flex justify-between items-center transition-all hover:bg-jade-50 border-l-4 border-l-amber-500 active-word-btn";
+                } else {
+                    btn.className = "w-full text-left p-4 rounded-2xl bg-white border border-transparent shadow-sm flex justify-between items-center transition-all hover:bg-jade-50 hover:border-jade-200";
+                }
+            });
+
+            updateCardDisplay();
+        }
+
+        // Update central flash card display values
+        function updateCardDisplay() {
+            const word = resourcesData[selectedIndex];
+            
+            const bigChar = document.getElementById('big-char');
+            const bigPinyin = document.getElementById('big-pinyin');
+            const wordMeaning = document.getElementById('word-meaning');
+            const pronounceTip = document.getElementById('pronounce-tip');
+
+            bigChar.textContent = selectedSystem === 'traditional' ? word.trad : word.simp;
+            bigPinyin.textContent = word.pinyin;
+            wordMeaning.textContent = word.meaning;
+            pronounceTip.textContent = word.tip;
+        }
+
+        // Simulating the vocal pronunciation (using built-in web synthesis speech)
+        function speakSelectedWord() {
+            const word = resourcesData[selectedIndex];
+            const textToSpeak = selectedSystem === 'traditional' ? word.trad : word.simp;
+            
+            if ('speechSynthesis' in window) {
+                // Cancel ongoing speak requests
+                window.speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(textToSpeak);
+                utterance.lang = 'zh-TW'; // Default standard Taiwanese Mandarin pronunciation matching I-Ying's profile
+                utterance.rate = 0.8; // Slightly slow rate to help language learners capture tones
+                window.speechSynthesis.speak(utterance);
+            } else {
+                // Fallback indicator
+                const notification = document.getElementById('form-notification');
+                notification.className = "mt-4 p-4 rounded-xl text-sm font-semibold bg-amber-50 text-amber-800";
+                notification.textContent = "Your current browser does not support built-in audio speech synthesis. Open on a modern device to try!";
+                notification.classList.remove('hidden');
+                setTimeout(() => notification.classList.add('hidden'), 4000);
+            }
+        }
+
+        // Form submission handling
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const notification = document.getElementById('form-notification');
+
+            // Feedback simulator
+            notification.className = "mt-4 p-4 rounded-xl text-sm font-semibold bg-emerald-50 text-emerald-800 border border-emerald-100";
+            notification.innerHTML = `🌟 <strong>Thank you, ${name}!</strong> Your request was successfully submitted. I-Ying Cheng will email you with your trial roadmap in 24 hours.`;
+            notification.classList.remove('hidden');
+
+            // Reset form fields
+            document.getElementById('booking-form').reset();
+            
+            // Automatically scroll to the notification message
+            notification.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
