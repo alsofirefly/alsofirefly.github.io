@@ -9,7 +9,7 @@
     <!-- Google Fonts: Noto Sans TC, Playfair Display & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons (Via FontAwesome's public CDN) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -42,7 +42,7 @@
                     },
                     fontFamily: {
                         sans: ['Plus Jakarta Sans', 'Noto Sans TC', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
                     }
                 }
             }
@@ -51,6 +51,79 @@
     <style>
         html {
             scroll-behavior: smooth;
+        }
+        body {
+            background:
+                radial-gradient(circle at top left, rgba(215, 255, 0, 0.12), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(255, 230, 77, 0.08), transparent 24%),
+                #0b100a;
+            color: #f5f0e2;
+        }
+        section:not(#home):not(#about):not(#contact) {
+            display: none !important;
+        }
+        .hidden {
+           display: none;
+        }
+        .firefly-hero {
+            background: #090d0c;
+        }
+        .hero-slideshow {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-position: center;
+            background-size: cover;
+            opacity: 0;
+            transform: scale(1.03);
+            transition: opacity 900ms ease;
+        }
+        .hero-slide.is-active {
+            opacity: 1;
+        }
+        .firefly-hero h1 {
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #d7ff00;
+            text-wrap: balance;
+        }
+        .firefly-hero .firefly-kicker,
+        .firefly-contact .firefly-kicker {
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+        }
+        .firefly-nav {
+            background: rgba(12, 17, 11, 0.94);
+            border-bottom: 1px solid rgba(215, 255, 0, 0.22);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+        }
+        .firefly-nav-shell {
+            box-shadow: inset 0 -1px 0 rgba(215, 255, 0, 0.16);
+        }
+        .firefly-nav-brand {
+            background: #cfff00;
+        }
+        .firefly-nav-center {
+            background: linear-gradient(180deg, rgba(16, 20, 12, 0.98), rgba(13, 18, 10, 0.98));
+            border-left: 1px solid rgba(215, 255, 0, 0.12);
+            border-right: 1px solid rgba(215, 255, 0, 0.12);
+            color: #b87534;
+        }
+        .firefly-nav-ribbon {
+            background: #cfff00;
+        }
+        .firefly-contact {
+            background: #0b100a;
+        }
+        .firefly-contact input,
+        .firefly-contact textarea {
+            background: #f7f2e6;
+            color: #121a11;
+            border-color: rgba(215, 255, 0, 0.22);
         }
         .chinese-pattern {
             background-color: #fdfdfc;
@@ -64,33 +137,37 @@
 <body class="font-sans text-dark-800 bg-[#FDFDFB] leading-relaxed">
 
     <!-- NAVIGATION BAR -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-dark-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-full bg-dark-900 flex items-center justify-center text-lime-500 font-serif text-xl font-bold">
-                        鄭
+    <nav class="firefly-nav fixed top-0 left-0 right-0 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 firefly-nav-shell">
+            <div class="grid grid-cols-[1.1fr_auto] md:grid-cols-[1.2fr_1.8fr_0.95fr] h-20 sm:h-24 overflow-hidden border-l border-r border-lime-500/20">
+                <div class="firefly-nav-brand flex items-center gap-3 px-4 sm:px-6 text-dark-950 min-w-0 border-r border-dark-950/10">
+                    <div class="w-10 h-10 rounded-full bg-dark-950 flex items-center justify-center text-lime-500 font-serif text-xl font-bold shrink-0">
+                        af
                     </div>
-                    <div>
-                        <span class="font-serif text-xl font-bold text-dark-900 tracking-wide">I-Ying Cheng</span>
-                        <p class="text-xs text-dark-500 tracking-wider font-semibfold uppercase">Mandarin Educator</p>
+                    <div class="min-w-0">
+                        <span class="block font-serif text-xl sm:text-2xl font-bold tracking-tight leading-none truncate">also Firefly</span>
+                        <p class="text-[10px] sm:text-xs tracking-[0.28em] uppercase leading-none mt-1 truncate">Deliver Season's Best</p>
                     </div>
-                </div>
-                
-                <!-- Desktop Nav (Optimized for One-Line Fit with Smaller Font & Spacing) -->
-                <div class="hidden md:flex items-center space-x-4 lg:space-x-6 font-semibold text-sm">
-                    <a href="#home" class="text-dark-600 hover:text-dark-900 transition-colors">Home</a>
-                    <a href="#about" class="text-dark-600 hover:text-dark-900 transition-colors">About Me</a>
-                    <a href="#workshops" class="text-dark-600 hover:text-dark-900 transition-colors">Workshops</a>
-                    <a href="#courses" class="text-dark-600 hover:text-dark-900 transition-colors">Courses</a>
-                    <a href="#resources" class="text-dark-600 hover:text-dark-900 transition-colors">Free Resources</a>
-                    <a href="#testimonials" class="text-dark-600 hover:text-dark-900 transition-colors">Testimonials</a>
-                    <a href="#contact" class="bg-dark-900 hover:bg-dark-800 text-white hover:text-lime-500 px-4 py-2 rounded-full shadow-md transition-all transform hover:-translate-y-0.5 border border-transparent hover:border-lime-500/20 font-bold text-xs lg:text-sm">Book a Trial Lesson</a>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <div class="flex items-center md:hidden">
-                    <button id="mobile-menu-btn" class="text-dark-900 hover:text-dark-700 focus:outline-none" aria-label="Toggle navigation">
+                <!-- Desktop Nav -->
+                <div class="firefly-nav-center hidden md:flex items-center justify-center gap-8 lg:gap-10 font-medium text-xs lg:text-sm tracking-[0.22em] uppercase px-6 min-w-0">
+                    <a href="#home" class="hover:text-[#dfb35c] transition-colors">Home</a>
+                    <a href="#about" class="hover:text-[#dfb35c] transition-colors">About</a>
+                    <a href="#contact" class="hover:text-[#dfb35c] transition-colors hidden">活動</a>
+                    <a href="#contact" class="hover:text-[#dfb35c] transition-colors hidden">Join Us</a>
+                </div>
+
+                <!-- Right Panel / Mobile Menu Button -->
+                <div class="firefly-nav-ribbon flex items-center justify-between md:justify-center px-4 sm:px-5 text-dark-950 min-w-0 border-l border-dark-950/10"  onclick="location.href='#contact'">
+                    <div class="hidden md:flex items-center gap-3 text-dark-950" style="cursor: pointer;">
+                        <div class="flex flex-col items-center leading-none tracking-[0.28em] text-[10px] uppercase font-semibold text-dark-950">
+                            <span>Join</span>
+                            <span>Us</span>
+                        </div>
+                        <i class="fa-solid fa-seedling text-2xl text-dark-950"></i>
+                    </div>
+                    <button id="mobile-menu-btn" class="text-dark-950 hover:text-dark-700 focus:outline-none md:hidden" aria-label="Toggle navigation">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -98,183 +175,193 @@
         </div>
 
         <!-- Mobile Nav Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-dark-100 px-4 pt-2 pb-6 space-y-3">
-            <a href="#home" class="block text-dark-700 hover:text-dark-950 font-medium py-2 border-b border-gray-100">Home</a>
-            <a href="#about" class="block text-dark-700 hover:text-dark-950 font-medium py-2 border-b border-gray-100">About Me</a>
-            <a href="#courses" class="block text-dark-700 hover:text-dark-950 font-medium py-2 border-b border-gray-100">Courses</a>
-            <a href="#resources" class="block text-dark-700 hover:text-dark-950 font-medium py-2 border-b border-gray-100">Free Resources</a>
-            <a href="#testimonials" class="block text-dark-700 hover:text-dark-950 font-medium py-2 border-b border-gray-100">Testimonials</a>
-            <a href="#contact" class="block bg-dark-900 text-lime-500 text-center py-3 rounded-xl font-bold shadow-md">Book a Trial Lesson</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0d120b] border-b border-lime-500/20 px-4 pt-3 pb-6 space-y-3 text-white/90">
+            <a href="#home" class="block py-2 border-b border-white/10 tracking-[0.2em] uppercase text-sm">Home</a>
+            <a href="#about" class="block py-2 border-b border-white/10 tracking-[0.2em] uppercase text-sm">About</a>
+            <a href="#contact" class="block bg-lime-500 text-dark-950 text-center py-3 rounded-xl font-bold shadow-md tracking-[0.22em] uppercase">Join Us</a>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section id="home" class="relative pt-32 pb-20 md:py-40 overflow-hidden">
-        <!-- Accent circles -->
-        <div class="absolute top-1/4 -left-12 w-64 h-64 bg-lime-100/30 rounded-full blur-3xl -z-10"></div>
-        <div class="absolute bottom-10 right-10 w-96 h-96 bg-dark-100/40 rounded-full blur-3xl -z-10"></div>
-        
+    <!-- INTRO SECTION -->
+    <section id="home" class="firefly-hero relative min-h-screen pt-32 pb-14 md:py-24 overflow-hidden">
+        <div class="hero-slideshow" aria-hidden="true">
+            <div class="hero-slide is-active" style="background-image: linear-gradient(90deg, rgba(7,10,7,0.74) 0%, rgba(7,10,7,0.56) 55%, rgba(7,10,7,0.22) 100%), url('assets/images/alsoFirefly_cheng.jpeg');"></div>
+            <div class="hero-slide" style="background-image: linear-gradient(90deg, rgba(7,10,7,0.74) 0%, rgba(7,10,7,0.56) 55%, rgba(7,10,7,0.22) 100%), url('assets/images/background11.jpg');"></div>
+            <div class="hero-slide" style="background-image: linear-gradient(90deg, rgba(7,10,7,0.76) 0%, rgba(7,10,7,0.58) 55%, rgba(7,10,7,0.24) 100%), url('assets/images/background10.jpg');"></div>
+            <div class="hero-slide" style="background-image: linear-gradient(90deg, rgba(7,10,7,0.76) 0%, rgba(7,10,7,0.58) 55%, rgba(7,10,7,0.24) 100%), url('assets/images/background9.jpg');"></div>
+            <div class="hero-slide" style="background-image: linear-gradient(90deg, rgba(7,10,7,0.76) 0%, rgba(7,10,7,0.58) 55%, rgba(7,10,7,0.24) 100%), url('assets/images/background12.jpg');"></div>
+            <div class="hero-slide" style="background-image: linear-gradient(90deg, rgba(7,10,7,0.76) 0%, rgba(7,10,7,0.58) 55%, rgba(7,10,7,0.24) 100%), url('assets/images/background5.jpg');"></div>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/40 to-black/15"></div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Left Content -->
-                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
-                    <div class="inline-flex items-center space-x-2 bg-dark-50 border border-dark-100 px-4 py-2 rounded-full">
-                        <span class="flex h-2 w-2 rounded-full bg-lime-500 animate-pulse"></span>
-                        <span class="text-xs font-semibold text-dark-700 uppercase tracking-widest">Now Booking Students • Online & In-person</span>
-                    </div>
-                    
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-gray-900 leading-tight">
-                        Master Mandarin with <br class="hidden sm:inline">
-                        <span class="text-dark-900 relative inline-block">
-                            I-Ying Cheng
-                            <span class="absolute left-0 bottom-1 w-full h-3 bg-lime-500 rounded-md -z-10"></span>
-                        </span>
-                        <span class="font-normal block text-xl sm:text-2xl font-sans mt-3 text-dark-500">
-                            Customized Chinese Lessons for Your Success (鄭亦瑩老師)
-                        </span>
+            <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-10 items-center min-h-[calc(100vh-10rem)]">
+                <div class="lg:col-span-8 space-y-6 max-w-5xl pt-4 sm:pt-8 lg:pt-12">
+                    <span class="firefly-kicker inline-flex items-center gap-2 text-[10px] sm:text-sm font-semibold text-white/80">
+                        <i class="fa-solid fa-bridge text-lime-400"></i> the authentic taiwanese culture experience
+                    </span>
+                    <h1 class="text-[clamp(4.5rem,10vw,8rem)] font-serif font-semibold leading-[0.82] max-w-4xl lg:max-w-none lg:whitespace-nowrap text-lime-400">
+                        also Firefly
                     </h1>
-                    
-                    <p class="text-lg text-dark-600 max-w-xl mx-auto lg:mx-0">
-                        A certified Mandarin educator with over 7 years of global teaching experience. Transform Chinese characters from confusing symbols into an exciting language adventure tailored to your personal goals.
+                    <p class="max-w-3xl text-sm sm:text-base lg:text-lg text-white/80 uppercase tracking-[0.22em] leading-7">
+                        the authentic Taiwanese culture experience
                     </p>
-                    
-                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
-                        <a href="#contact" class="bg-lime-500 hover:bg-lime-400 text-dark-950 font-extrabold text-center px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
-                            Book a Trial Lesson (Only $10)
+                    <p class="max-w-3xl text-sm sm:text-base lg:text-lg text-white/80 tracking-[0.22em] leading-7">
+                        Blending the Flavors and Culture of Taiwan with Mandarin Instruction
+                    </p>                    
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#contact" class="inline-flex items-center justify-center bg-[#f1df2b] hover:bg-[#fff05f] text-dark-950 px-8 py-3 rounded-sm shadow-lg font-semibold uppercase tracking-[0.22em]">
+                            Inquire Today
                         </a>
-                        <a href="#courses" class="border border-dark-900 text-dark-900 hover:bg-dark-50 font-semibold text-center px-8 py-4 rounded-full transition-all">
-                            Explore Courses
-                        </a>
-                    </div>
-
-                    <!-- Trust Stats -->
-                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-dark-100 max-w-md mx-auto lg:mx-0">
-                        <div>
-                            <p class="text-3xl font-bold text-dark-900">7+</p>
-                            <p class="text-xs text-dark-500 uppercase tracking-wider">Years Experience</p>
-                        </div>
-                        <div>
-                            <p class="text-3xl font-bold text-dark-900">500+</p>
-                            <p class="text-xs text-dark-500 uppercase tracking-wider">Happy Students</p>
-                        </div>
-                        <div>
-                            <p class="text-3xl font-bold text-dark-900">99%</p>
-                            <p class="text-xs text-dark-500 uppercase tracking-wider">Success Rate</p>
-                        </div>
                     </div>
                 </div>
-
-                <!-- Right Visual -->
-                <div class="lg:col-span-5 flex justify-center">
-                    <div class="relative w-80 h-80 sm:w-96 sm:h-96">
-                        <!-- Background Golden Circle -->
-                        <div class="absolute inset-4 rounded-full border-4 border-lime-500/35 border-dashed animate-[spin_60s_linear_infinite]"></div>
-                        <!-- Inner Dark Background -->
-                        <div class="absolute inset-8 rounded-full bg-gradient-to-tr from-dark-900 to-dark-800 shadow-2xl flex items-center justify-center overflow-hidden">
-                            <!-- Fallback/Self-Designed Placeholder Avatar -->
-                            <div class="text-center p-8 text-white">
-                                <span class="font-serif text-8xl block mb-2 text-lime-500 opacity-95 animate-bounce">鄭</span>
-                                <h3 class="font-serif text-2xl font-semibold">I-Ying Cheng</h3>
-                                <p class="text-sm text-dark-300">Professional Mandarin Teacher</p>
-                                <p class="text-xs text-lime-400 mt-2 font-bold uppercase tracking-wider">✨ TCSOL Certified ✨</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Floating Badges -->
-                        <div class="absolute -top-2 left-6 bg-white p-3 rounded-2xl shadow-lg border border-lime-400 flex items-center space-x-2">
-                            <span class="text-2xl">👩‍🏫</span>
-                            <div>
-                                <p class="text-[10px] uppercase text-gray-400 font-bold tracking-wider">Credentials</p>
-                                <p class="text-xs font-bold text-dark-900">TCSOL Certified</p>
-                            </div>
-                        </div>
-                        
-                        <div class="absolute bottom-10 -right-6 bg-white p-3 rounded-2xl shadow-lg border border-lime-400 flex items-center space-x-2">
-                            <span class="text-2xl">🗣️</span>
-                            <div>
-                                <p class="text-[10px] uppercase text-gray-400 font-bold tracking-wider">Accents</p>
-                                <p class="text-xs font-bold text-dark-900">Standard Pinyin & Bopomofo</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- BIO / TEACHING PHILOSOPHY -->
-    <section id="about" class="py-20 bg-white relative">
-        <div class="absolute inset-0 chinese-pattern"></div>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="relative py-24 bg-[#f7f2e6] text-dark-950 overflow-hidden">
+        <div class="absolute inset-0 opacity-40">
+            <div class="absolute top-8 right-0 w-72 h-72 rounded-full bg-lime-100 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-white blur-3xl"></div>
+        </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                
-                <div class="space-y-6">
-                    <span class="text-sm font-bold tracking-widest uppercase text-lime-600">Meet Your Teacher</span>
-                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-dark-900">
-                        Empathetic, Fun, and Result-Oriented Mandarin Teaching
-                    </h2>
-                    <p class="text-dark-600 text-lg">
-                        Hello! I am I-Ying Cheng (鄭亦瑩). I believe that learning a language should never be about memorizing tedious lists of dry characters. It is about connection, understanding cultures, and finding your own voice.
-                    </p>
-                    <p class="text-dark-600">
-                        Whether you are a complete beginner trying to grasp tones for the first time, a business professional looking to communicate in high-stakes environments, or looking for AP Chinese prep, I design customized paths that align directly with your lifestyle.
-                    </p>
-                    
-                    <div class="space-y-3 pt-2">
-                        <div class="flex items-start space-x-3">
-                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-lime-100 flex items-center justify-center text-dark-900">
-                                <i class="fa-solid fa-check text-xs"></i>
-                            </div>
-                            <p class="text-dark-700"><strong class="text-dark-900">Bilingual Teaching:</strong> Clear explanations in English/Mandarin for all grammar complexities.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-7 space-y-8">
+                    <div class="space-y-4 max-w-3xl">
+                        <span class="inline-block text-sm font-bold tracking-[0.35em] uppercase text-dark-600">Our Story</span>
+                        <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[0.95] text-dark-950">Story, culture, and language that feel alive.</h2>
+                        <p class="text-lg leading-8 text-dark-700">
+                            Language is more than vocabulary—it is a living reflection of a culture’s history, stories, and people. Moving beyond traditional textbooks, I design tailored experiences that bring Mandarin to life through the vibrant lens of Taiwanese heritage and culinary traditions.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                        <div class="rounded-[2rem] overflow-hidden shadow-xl bg-white">
+                            <img src="assets/images/background11.jpg" alt="Image by 五玄土 ORIENTO" class="w-full h-full object-cover min-h-[360px]">
                         </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-lime-100 flex items-center justify-center text-dark-900">
-                                <i class="fa-solid fa-check text-xs"></i>
-                            </div>
-                            <p class="text-dark-700"><strong class="text-dark-900">Customized Materials:</strong> Handouts, worksheets, and interactive flashcards crafted by me for you.</p>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-lime-100 flex items-center justify-center text-dark-900">
-                                <i class="fa-solid fa-check text-xs"></i>
-                            </div>
-                            <p class="text-dark-700"><strong class="text-dark-900">Culture Integration:</strong> Understand the culture, idioms, and historical context of the words you speak.</p>
+                        <div class="rounded-[2rem] overflow-hidden shadow-xl bg-white">
+                            <img src="assets/images/background10.jpg" alt="About page image" class="w-full h-full object-cover min-h-[360px]">
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature Grid Box -->
-                <div class="bg-dark-50 rounded-3xl p-8 sm:p-10 border border-dark-100 shadow-inner">
-                    <h3 class="font-serif text-2xl font-semibold text-dark-900 mb-6 text-center">My Core Teaching Methods</h3>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="bg-white p-5 rounded-2xl border border-dark-100 shadow-sm hover:border-lime-400 transition-colors">
-                            <div class="w-10 h-10 rounded-xl bg-lime-100 flex items-center justify-center text-dark-900 mb-3 text-lg font-bold">1</div>
-                            <h4 class="font-bold text-dark-950 mb-1">Interactive Tones Clinic</h4>
-                            <p class="text-xs text-dark-500">Perfect your accent, cadence, and tone changes using physical responses and visual pitch lines.</p>
-                        </div>
-                        
-                        <div class="bg-white p-5 rounded-2xl border border-dark-100 shadow-sm hover:border-lime-400 transition-colors">
-                            <div class="w-10 h-10 rounded-xl bg-lime-100 flex items-center justify-center text-dark-900 mb-3 text-lg font-bold">2</div>
-                            <h4 class="font-bold text-dark-950 mb-1">Scenario-Based Speech</h4>
-                            <p class="text-xs text-dark-500">Dive into roleplaying real-world environments like booking a taxi, shopping, or signing a contract.</p>
-                        </div>
+                <div class="lg:col-span-5 space-y-6 lg:pt-24">
+                    <div class="rounded-[2rem] overflow-hidden shadow-2xl bg-white">
+                        <img src="assets/images/background4.jpg" alt="Sphere on Spiral Stairs" class="w-full h-full object-cover min-h-[420px]">
+                    </div>
+                    <div class="rounded-[2rem] bg-white/70 backdrop-blur border border-dark-100 p-8 shadow-lg space-y-4">
+                        <h3 class="font-serif text-3xl font-semibold">What we value</h3>
+                        <p class="text-dark-700 leading-8">
+                            Authentic Taiwanese culture, clear Mandarin instruction, and welcoming learning experiences that feel personal, practical, and memorable.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <div class="bg-white p-5 rounded-2xl border border-dark-100 shadow-sm hover:border-lime-400 transition-colors">
-                            <div class="w-10 h-10 rounded-xl bg-lime-100 flex items-center justify-center text-dark-900 mb-3 text-lg font-bold">3</div>
-                            <h4 class="font-bold text-dark-950 mb-1">Character Etymology</h4>
-                            <p class="text-xs text-dark-500">Never memorize blindly. Learn radicals and the structural story behind each Hanzi character.</p>
+    <!-- WORKSHOP HIGHLIGHT SECTION -->
+    <section id="workshops" class="py-20 bg-dark-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div class="space-y-5">
+                    <span class="text-sm font-bold tracking-widest uppercase text-lime-600">Culture Immersion Workshop</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-dark-900">Learn Mandarin through Taiwanese stories, snacks, and conversation.</h2>
+                    <p class="text-gray-700 max-w-2xl">This hands-on workshop blends culture, food, and language practice. You will discuss Taiwanese markets, order local meals, and use everyday Mandarin phrases in a friendly, small-group setting.</p>
+                    <div class="grid gap-4 sm:grid-cols-3">
+                        <div class="rounded-3xl bg-white border border-dark-100 p-5 shadow-sm">
+                            <p class="text-sm uppercase tracking-widest text-dark-500">Duration</p>
+                            <p class="mt-2 font-semibold text-dark-900">2 hours</p>
                         </div>
+                        <div class="rounded-3xl bg-white border border-dark-100 p-5 shadow-sm">
+                            <p class="text-sm uppercase tracking-widest text-dark-500">Group size</p>
+                            <p class="mt-2 font-semibold text-dark-900">4–8 learners</p>
+                        </div>
+                        <div class="rounded-3xl bg-white border border-dark-100 p-5 shadow-sm">
+                            <p class="text-sm uppercase tracking-widest text-dark-500">Focus</p>
+                            <p class="mt-2 font-semibold text-dark-900">Speaking practice + cultural immersion</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="workshop/culture-immersion.html" class="inline-flex items-center justify-center bg-dark-900 text-white px-6 py-3 rounded-full shadow hover:bg-dark-800 transition">Book a Workshop</a>
+                        <a href="#contact" class="inline-flex items-center justify-center border border-dark-900 text-dark-900 px-6 py-3 rounded-full hover:bg-dark-50 transition">Talk to the Teacher</a>
+                    </div>
+                </div>
+                <div class="rounded-[2rem] overflow-hidden bg-white border border-dark-100 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80" alt="Taiwan workshop scene" class="w-full h-full object-cover min-h-[320px]">
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <div class="bg-white p-5 rounded-2xl border border-dark-100 shadow-sm hover:border-lime-400 transition-colors">
-                            <div class="w-10 h-10 rounded-xl bg-lime-100 flex items-center justify-center text-dark-900 mb-3 text-lg font-bold">4</div>
-                            <h4 class="font-bold text-dark-950 mb-1">Spaced Repetition Work</h4>
-                            <p class="text-xs text-dark-500">Utilize customized flashcards tailored after every single lesson to combat the forgetting curve.</p>
+    <!-- PINEAPPLE CAKE RESERVATION SECTION -->
+    <section id="pineapple-shop" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end">
+                <div class="space-y-4">
+                    <span class="text-sm font-bold tracking-widest uppercase text-lime-600">鳳梨酥預訂</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-dark-900">Pickup-only Pineapple Cake Reservations</h2>
+                    <p class="text-gray-700 max-w-prose">最少訂購數量：8、12 或 16 盒。每盒採現場保鮮備貨，取貨付款即可。</p>
+                    <div class="grid grid-cols-3 gap-3 text-center text-dark-700 mt-4">
+                        <div class="rounded-3xl border border-dark-100 bg-dark-50 p-4">
+                            <p class="text-sm uppercase tracking-widest text-dark-500">8 pcs</p>
+                            <p class="text-xl font-bold">$40</p>
+                        </div>
+                        <div class="rounded-3xl border border-dark-100 bg-dark-50 p-4">
+                            <p class="text-sm uppercase tracking-widest text-dark-500">12 pcs</p>
+                            <p class="text-xl font-bold">$56</p>
+                        </div>
+                        <div class="rounded-3xl border border-dark-100 bg-dark-50 p-4">
+                            <p class="text-sm uppercase tracking-widest text-dark-500">16 pcs</p>
+                            <p class="text-xl font-bold">$72</p>
                         </div>
                     </div>
                 </div>
 
+                <div class="bg-dark-50 rounded-3xl p-8 shadow-sm">
+                    <form id="p_home_form" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-dark-900">姓名 (Name)</label>
+                            <input type="text" id="ph_name" class="w-full border rounded-lg px-3 py-2" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-dark-900">Email</label>
+                            <input type="email" id="ph_email" class="w-full border rounded-lg px-3 py-2" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-dark-900">電話 (Phone)</label>
+                            <input type="tel" id="ph_phone" class="w-full border rounded-lg px-3 py-2" required>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-dark-900">盒型 (Box Size)</label>
+                                <select id="ph_size" class="w-full border rounded-lg px-3 py-2" required>
+                                    <option value="8" data-price="40">8 pcs — $40</option>
+                                    <option value="12" data-price="56">12 pcs — $56</option>
+                                    <option value="16" data-price="72">16 pcs — $72</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-dark-900">數量 (Quantity)</label>
+                                <input type="number" id="ph_qty" class="w-full border rounded-lg px-3 py-2" min="1" value="1" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-dark-900">取貨時間 (Pickup Date & Time)</label>
+                            <input type="datetime-local" id="ph_pickup" class="w-full border rounded-lg px-3 py-2" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-dark-900">備註 (Notes)</label>
+                            <textarea id="ph_notes" class="w-full border rounded-lg px-3 py-2" rows="3"></textarea>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm">Total: <strong id="ph_total">$40</strong></span>
+                            <button type="button" onclick="submitPineappleHome()" class="bg-yellow-500 hover:bg-yellow-600 text-white rounded-full px-5 py-3">Reserve Now</button>
+                        </div>
+                        <p id="ph_msg" class="text-sm text-green-700 hidden"></p>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -636,80 +723,83 @@
     </section>
 
     <!-- CONTACT / BOOKING FORM -->
-    <section id="contact" class="py-20 bg-white">
+    <section id="contact" class="firefly-contact py-20 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 
                 <!-- Info column -->
                 <div class="lg:col-span-5 space-y-6">
-                    <span class="text-sm font-bold tracking-widest uppercase text-lime-600">Start Your Journey</span>
-                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900">Let's Design Your Custom Lesson Plan</h2>
-                    <p class="text-gray-600">
-                        Have a question, specific business target, or looking to schedule an introductory $10 trial session? Drop a message below and I'll get back to you within 24 hours with a suggested roadmap.
+                    <span class="firefly-kicker text-sm font-bold text-lime-400">start your journey</span>
+                    <h2 class="text-4xl sm:text-5xl font-serif font-semibold leading-tight text-lime-400">Let's Design Your Custom Cultural Experience</h2>
+                    <p class="text-white/75 max-w-xl">
+                        Have a question, specific business target, or looking to schedule an introductory trial session? Drop a message below.
                     </p>
 
                     <div class="space-y-4 pt-4">
                         <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-dark-50 flex items-center justify-center text-dark-900 border border-dark-100">
+                            <div class="w-10 h-10 rounded-full bg-lime-500 flex items-center justify-center text-dark-950 border border-lime-300/30">
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div>
-                                <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Email</p>
-                                <a href="mailto:alsofireflycheng@gmail.com" class="text-sm font-semibold hover:text-lime-600 transition-colors">alsofireflycheng@gmail.com</a>
+                                <p class="text-[10px] text-white/45 uppercase tracking-wider font-bold">Email</p>
+                                <a href="mailto:alsofireflycheng@gmail.com" class="text-sm font-semibold hover:text-lime-400 transition-colors">alsofireflycheng@gmail.com</a>
                             </div>
                         </div>
 
                         <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-dark-50 flex items-center justify-center text-dark-900 border border-dark-100">
+                            <div class="w-10 h-10 rounded-full bg-lime-500 flex items-center justify-center text-dark-950 border border-lime-300/30">
                                 <i class="fa-solid fa-clock"></i>
                             </div>
                             <div>
-                                <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Timezone & Availability</p>
+                                <p class="text-[10px] text-white/45 uppercase tracking-wider font-bold">Timezone & Availability</p>
                                 <p class="text-sm font-semibold">Eastern Time • Highly Flexible Booking</p>
                             </div>
                         </div>
 
                         <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-dark-50 flex items-center justify-center text-dark-900 border border-dark-100">
+                            <div class="w-10 h-10 rounded-full bg-lime-500 flex items-center justify-center text-dark-950 border border-lime-300/30">
                                 <i class="fa-solid fa-display"></i>
                             </div>
                             <div>
-                                <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Virtual Platforms</p>
+                                <p class="text-[10px] text-white/45 uppercase tracking-wider font-bold">Virtual Platforms</p>
                                 <p class="text-sm font-semibold">Zoom, Skype, Google Meet, WeChat</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="pt-6">
-                        <div class="p-4 bg-dark-50 rounded-2xl border border-dark-100 flex items-start space-x-3">
+                        <div class="p-4 bg-white/5 rounded-2xl border border-white/10 flex items-start space-x-3">
                             <span class="text-lg">🔒</span>
-                            <p class="text-xs text-gray-500 leading-relaxed">
-                                <strong>Safety Guarantee:</strong> I value your privacy. Your personal information is solely used to establish contact with you for teaching. No spam ever.
+                            <p class="text-xs text-white/60 leading-relaxed">
+                                <strong>Safety Guarantee:</strong> I value your privacy. Your personal information is solely used to establish contact with you. No spam ever.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Form Column -->
-                <div class="lg:col-span-7 bg-dark-50 rounded-3xl p-8 sm:p-10 border border-dark-100 shadow-inner">
-                    <h3 class="font-serif text-2xl font-semibold text-gray-950 mb-6">Inquire About Lessons</h3>
+                <div class="lg:col-span-7 bg-[#131913] rounded-3xl p-8 sm:p-10 border border-lime-500/20 shadow-2xl text-white/45">
+                    <h3 class="font-serif text-3xl font-semibold text-lime-400 mb-6">Inquire About also Firefly</h3>
+                    <iframe data-tally-src="https://tally.so/embed/RGj97Q?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="350" frameborder="0" marginheight="0" marginwidth="0" title="also Firefly contact form"></iframe>
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
                     
-                    <form id="booking-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                    
+                    <form id="booking-form" onsubmit="handleFormSubmit(event)" class="space-y-5 hidden">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label for="name" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Full Name</label>
-                                <input type="text" id="name" required class="w-full bg-white border border-dark-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-dark-500" placeholder="John Doe">
+                                <label for="name" class="block text-xs font-bold text-white/45 uppercase tracking-wider mb-2">Full Name</label>
+                                <input type="text" id="name" required class="w-full border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lime-400" placeholder="John Doe">
                             </div>
                             <div>
-                                <label for="email" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Email Address</label>
-                                <input type="email" id="email" required class="w-full bg-white border border-dark-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-dark-500" placeholder="john@example.com">
+                                <label for="email" class="block text-xs font-bold text-white/45 uppercase tracking-wider mb-2">Email Address</label>
+                                <input type="email" id="email" required class="w-full border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lime-400" placeholder="john@example.com">
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label for="level" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Your Mandarin Level</label>
-                                <select id="level" class="w-full bg-white border border-dark-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-dark-500">
+                                <label for="level" class="block text-xs font-bold text-white/45 uppercase tracking-wider mb-2">Your Mandarin Level</label>
+                                <select id="level" class="w-full border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lime-400">
                                     <option value="beginner">Absolute Beginner</option>
                                     <option value="elementary">Elementary</option>
                                     <option value="intermediate">Intermediate</option>
@@ -717,8 +807,8 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="goal" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Primary Goal</label>
-                                <select id="goal" class="w-full bg-white border border-dark-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-dark-500">
+                                <label for="goal" class="block text-xs font-bold text-white/45 uppercase tracking-wider mb-2">Primary Goal</label>
+                                <select id="goal" class="w-full border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lime-400">
                                     <option value="conversation">Conversational Fluency</option>
                                     <option value="business">Business / Career Needs</option>
                                     <option value="academic">HSK / TOCFL Exam Prep</option>
@@ -729,12 +819,12 @@
                         </div>
 
                         <div>
-                            <label for="message" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Tell me about yourself</label>
-                            <textarea id="message" rows="4" required class="w-full bg-white border border-dark-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-dark-500" placeholder="Let me know your target, any previous Chinese learning experience, or your current schedule limitations..."></textarea>
+                            <label for="message" class="block text-xs font-bold text-white/45 uppercase tracking-wider mb-2">Tell me about your questions</label>
+                            <textarea id="message" rows="4" required class="w-full border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lime-400" placeholder="Let me know your target, any previous Mandarin learning experience, or your current schedule limitations..."></textarea>
                         </div>
 
-                        <button type="submit" class="w-full bg-lime-500 hover:bg-lime-400 text-dark-950 font-extrabold text-center py-4 rounded-xl shadow-md transition-all hover:shadow-lg">
-                            Send Booking Inquiry
+                        <button type="submit" class="w-full bg-[#f1df2b] hover:bg-[#fff05f] text-dark-950 font-extrabold text-center py-4 rounded-xl shadow-md transition-all hover:shadow-lg uppercase tracking-[0.22em]">
+                            Send Inquiry
                         </button>
                     </form>
 
@@ -747,39 +837,42 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-dark-950 text-white py-12 border-t border-dark-900">
+    <footer class="bg-[#0b100a] text-white border-t border-lime-500/20 py-14">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pb-8 border-b border-dark-900">
-                
-                <div class="md:col-span-5 text-center md:text-left">
-                    <div class="flex items-center justify-center md:justify-start space-x-3 mb-2">
-                        <div class="w-8 h-8 rounded-full bg-lime-500 text-dark-950 flex items-center justify-center font-serif font-bold text-lg">
-                            鄭
-                        </div>
-                        <span class="font-serif text-lg font-bold tracking-wide">I-Ying Cheng</span>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                <div class="lg:col-span-4 space-y-3">
+                    <h3 class="font-serif text-3xl font-semibold text-lime-400">also Firefly</h3>
+                    <p class="text-sm text-white/70 leading-7 max-w-sm">The authentic Taiwanese culture experience</p>
+                    <p class="text-sm text-white/70 leading-7">Ann Arbor, MI</p>
+                    <p class="text-sm text-white/70 leading-7">alsofireflycheng@gmail.com
+                        <br>Tel:734-418-8123
+                    </p>
+                </div>
+
+                <div class="lg:col-span-2 space-y-3">
+                    <h4 class="text-sm font-bold tracking-[0.3em] uppercase text-lime-400">Operating Hours</h4>
+                    <p class="text-sm text-white/70 leading-7">
+                        Mon - Fri: 8am - 5pm<br>
+                        Saturday: 9am - 12pm
+                    </p>
+                </div>
+
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="text-sm font-bold tracking-[0.3em] uppercase text-lime-400">Get the Latest News & Updates</h4>
+                    <div class="flex flex-wrap gap-3 text-sm text-white/70">
+                        <a href="#" class="hover:text-lime-400 transition-colors hidden">Store Policy</a>
+                        <a href="#" class="hover:text-lime-400 transition-colors hidden">Shipping & Returns</a>
+                        <a href="#" class="hover:text-lime-400 transition-colors hidden">FAQ</a>
                     </div>
-                    <p class="text-xs text-dark-300 max-w-sm">Professional TCSOL certified Mandarin teacher delivering custom-tailored virtual language experiences globally.</p>
+                    <div class="flex gap-4 pt-2 text-white/80">
+                        <a href="#" aria-label="Instagram" class="hover:text-lime-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
                 </div>
-
-                <div class="md:col-span-4 flex justify-center space-x-6">
-                    <a href="#about" class="text-xs text-dark-300 hover:text-lime-500 transition-colors">About</a>
-                    <a href="#workshops" class="text-xs text-dark-300 hover:text-lime-500 transition-colors">Workshops</a>
-                    <a href="#courses" class="text-xs text-dark-300 hover:text-lime-500 transition-colors">Courses</a>
-                    <a href="#resources" class="text-xs text-dark-300 hover:text-lime-500 transition-colors">Practice</a>
-                    <a href="#testimonials" class="text-xs text-dark-300 hover:text-lime-500 transition-colors">Testimonials</a>
-                </div>
-
-                <div class="md:col-span-3 flex justify-center md:justify-end space-x-4">
-                    <a href="#" class="w-8 h-8 rounded-full bg-dark-900 hover:bg-lime-500 flex items-center justify-center text-white text-sm transition-all" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#" class="w-8 h-8 rounded-full bg-dark-900 hover:bg-lime-500 flex items-center justify-center text-white text-sm transition-all" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#" class="w-8 h-8 rounded-full bg-dark-900 hover:bg-lime-500 flex items-center justify-center text-white text-sm transition-all" aria-label="WeChat"><i class="fa-brands fa-weixin"></i></a>
-                </div>
-
             </div>
 
-            <div class="flex flex-col sm:flex-row justify-between items-center pt-8 text-[11px] text-dark-400 space-y-4 sm:space-y-0">
-                <p>© 2026 I-Ying Cheng Mandarin Studio. All Rights Reserved.</p>
-                <p>Designed with ⚡ for global language connection.</p>
+            <div class="pt-10 mt-10 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/45">
+                <p>©2016 by also Firefly</p>
+                <p>also Firefly</p>
             </div>
         </div>
     </footer>
@@ -801,6 +894,84 @@
                 mobileMenu.classList.add('hidden');
             });
         });
+
+        // Hero slideshow
+        const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
+        if (heroSlides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            let activeHeroSlide = 0;
+            setInterval(() => {
+                heroSlides[activeHeroSlide].classList.remove('is-active');
+                activeHeroSlide = (activeHeroSlide + 1) % heroSlides.length;
+                heroSlides[activeHeroSlide].classList.add('is-active');
+            }, 4500);
+        }
+
+        // Pineapple cake reservation form handler
+        const FORM_ENDPOINT = 'https://script.google.com/macros/s/WEB_APP_ID/exec';
+
+        function getPriceForSize(size) {
+            if (size === '8') return 40;
+            if (size === '12') return 56;
+            if (size === '16') return 72;
+            return 0;
+        }
+
+        function updatePineappleHomeTotal() {
+            const size = document.getElementById('ph_size').value;
+            const qty = parseInt(document.getElementById('ph_qty').value || '1', 10);
+            const total = getPriceForSize(size) * qty;
+            document.getElementById('ph_total').innerText = `$${total}`;
+            return total;
+        }
+
+        document.getElementById('ph_size').addEventListener('change', updatePineappleHomeTotal);
+        document.getElementById('ph_qty').addEventListener('input', updatePineappleHomeTotal);
+        updatePineappleHomeTotal();
+
+        async function submitPineappleHome() {
+            const name = document.getElementById('ph_name').value.trim();
+            const email = document.getElementById('ph_email').value.trim();
+            const phone = document.getElementById('ph_phone').value.trim();
+            const size = document.getElementById('ph_size').value;
+            const qty = parseInt(document.getElementById('ph_qty').value || '1', 10);
+            const pickup = document.getElementById('ph_pickup').value;
+            const notes = document.getElementById('ph_notes').value.trim();
+            const total = getPriceForSize(size) * qty;
+
+            if (!name || !email || !phone || !pickup) {
+                alert('請填寫所有必填欄位 / please fill required fields.');
+                return;
+            }
+
+            const payload = {
+                type: 'pineapple_reservation',
+                name,
+                email,
+                phone,
+                size,
+                qty,
+                pickup,
+                notes,
+                total,
+                timestamp: new Date().toISOString()
+            };
+
+            try {
+                const res = await fetch(FORM_ENDPOINT, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                if (!res.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                document.getElementById('ph_msg').classList.remove('hidden');
+                document.getElementById('ph_msg').innerText = '預訂已送出！我會盡快與您確認取貨時間。 (Reservation sent — we will confirm pickup)';
+            } catch (err) {
+                console.error(err);
+                alert('送出失敗，請稍後再試或用電子郵件聯絡。');
+            }
+        }
 
         // Interactive Resources: Data
         const resourcesData = [
