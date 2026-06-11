@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I-Ying Cheng | Lantern Riddle 1</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans TC, Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons (Via FontAwesome's public CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lime: {
+                            50: '#f9ffd1',
+                            100: '#f0ff9e',
+                            400: '#dbff3d',
+                            500: '#CCFF00',
+                            600: '#b2e000',
+                            700: '#8fad00',
+                        },
+                        dark: {
+                            50: '#f3f5f4',
+                            100: '#e1e5e3',
+                            200: '#c5cbca',
+                            300: '#9fa8a6',
+                            400: '#75817e',
+                            500: '#5a6663',
+                            600: '#46504e',
+                            700: '#38403f',
+                            800: '#1b2422',
+                            900: '#111817',
+                            950: '#090d0c',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Noto Sans TC', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background:
+                radial-gradient(circle at top left, rgba(215, 255, 0, 0.12), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(255, 230, 77, 0.08), transparent 24%),
+                #0b100a;
+            color: #f5f0e2;
+        }
+        .hidden {
+           display: none;
+        }
+        .firefly-nav {
+            background: rgba(12, 17, 11, 0.94);
+            border-bottom: 1px solid rgba(215, 255, 0, 0.22);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+        }
+        .firefly-nav-shell {
+            box-shadow: inset 0 -1px 0 rgba(215, 255, 0, 0.16);
+        }
+        .firefly-nav-brand {
+            background: #cfff00;
+        }
+        .firefly-nav-center {
+            background: linear-gradient(180deg, rgba(16, 20, 12, 0.98), rgba(13, 18, 10, 0.98));
+            border-left: 1px solid rgba(215, 255, 0, 0.12);
+            border-right: 1px solid rgba(215, 255, 0, 0.12);
+            color: #b87534;
+        }
+        .firefly-nav-ribbon {
+            background: #cfff00;
+        }
+        .firefly-hero h1 {
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #d7ff00;
+            text-wrap: balance;
+        }
+        .firefly-kicker {
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body class="font-sans text-dark-800 bg-[#FDFDFB] leading-relaxed">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="firefly-nav fixed top-0 left-0 right-0 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 firefly-nav-shell">
+            <div class="grid grid-cols-[1.1fr_auto] md:grid-cols-[1.2fr_1.8fr_0.95fr] h-20 sm:h-24 overflow-hidden border-l border-r border-lime-500/20">
+                <div class="firefly-nav-brand flex items-center gap-3 px-4 sm:px-6 text-dark-950 min-w-0 border-r border-dark-950/10">
+                    <div class="w-10 h-10 rounded-full bg-dark-950 flex items-center justify-center text-lime-500 font-serif text-xl font-bold shrink-0">
+                        af
+                    </div>
+                    <div class="min-w-0">
+                        <span class="block font-serif text-xl sm:text-2xl font-bold tracking-tight leading-none truncate">also Firefly</span>
+                        <p class="text-[10px] sm:text-xs tracking-[0.28em] uppercase leading-none mt-1 truncate">Deliver Season's Best</p>
+                    </div>
+                </div>
+
+                <div class="firefly-nav-center hidden md:flex items-center justify-center gap-8 lg:gap-10 font-medium text-xs lg:text-sm tracking-[0.22em] uppercase px-6 min-w-0">
+                    <a href="/index.html#home" class="hover:text-[#dfb35c] transition-colors">Home</a>
+                    <a href="/index.html#about" class="hover:text-[#dfb35c] transition-colors">About</a>
+                    <a href="#riddle" class="hover:text-[#dfb35c] transition-colors">Riddle</a>
+                    <a href="/index.html#contact" class="hover:text-[#dfb35c] transition-colors">Join Us</a>
+                </div>
+
+                <div class="firefly-nav-ribbon flex items-center justify-between md:justify-center px-4 sm:px-5 text-dark-950 min-w-0 border-l border-dark-950/10" onclick="location.href='/index.html#contact'">
+                    <div class="hidden md:flex items-center gap-3 text-dark-950" style="cursor: pointer;">
+                        <div class="flex flex-col items-center leading-none tracking-[0.28em] text-[10px] uppercase font-semibold text-dark-950">
+                            <span>Join</span>
+                            <span>Us</span>
+                        </div>
+                        <i class="fa-solid fa-seedling text-2xl text-dark-950"></i>
+                    </div>
+                    <button id="mobile-menu-btn" class="text-dark-950 hover:text-dark-700 focus:outline-none md:hidden" aria-label="Toggle navigation">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0d120b] border-b border-lime-500/20 px-4 pt-3 pb-6 space-y-3 text-white/90">
+            <a href="/index.html#home" class="block py-2 border-b border-white/10 tracking-[0.2em] uppercase text-sm">Home</a>
+            <a href="/index.html#about" class="block py-2 border-b border-white/10 tracking-[0.2em] uppercase text-sm">About</a>
+            <a href="#riddle" class="block py-2 border-b border-white/10 tracking-[0.2em] uppercase text-sm">Riddle</a>
+            <a href="/index.html#contact" class="block bg-lime-500 text-dark-950 text-center py-3 rounded-xl font-bold shadow-md tracking-[0.22em] uppercase">Join Us</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="firefly-hero relative min-h-screen pt-32 pb-14 md:py-24 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/40 to-black/15"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-10 items-center min-h-[calc(100vh-10rem)]">
+                <div class="lg:col-span-8 space-y-6 max-w-5xl pt-4 sm:pt-8 lg:pt-12">
+                    <span class="firefly-kicker inline-flex items-center gap-2 text-[10px] sm:text-sm font-semibold text-white/80">
+                        <i class="fa-solid fa-bridge text-lime-400"></i> lantern riddle activity
+                    </span>
+                    <h1 class="text-[clamp(4rem,9vw,7.5rem)] font-serif font-semibold leading-[0.82] max-w-4xl lg:max-w-none lg:whitespace-nowrap text-lime-400">
+                        Lattern Riddles
+                    </h1>
+                    <p class="max-w-3xl text-sm sm:text-base lg:text-lg text-white/80 uppercase tracking-[0.22em] leading-7">
+                        English riddles about Chinese characters.
+                    </p>
+                    <p class="text-lg leading-8 text-white/80">
+                           Solving lantern riddles (猜燈謎) is a beloved cultural activity during Taiwan's Lantern Festival, held on the fifteenth day of the lunar new year. People gather at festivals to read clever clues on colorful lanterns, testing their wits. Taiwanese versions uniquely blend classical poetry with local wordplay, geography, and pop culture, adding community spirit to the holiday.
+                        </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RIDDLE SECTION -->
+    <section id="riddle" class="relative py-24 bg-[#f7f2e6] text-dark-950 overflow-hidden">
+        <div class="absolute inset-0 opacity-40">
+            <div class="absolute top-8 right-0 w-72 h-72 rounded-full bg-lime-100 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-white blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-7 space-y-8">
+                    <div class="space-y-4 max-w-3xl">
+                        <span class="inline-block text-sm font-bold tracking-[0.35em] uppercase text-dark-600">Riddle 1</span>
+                        <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[0.95] text-dark-950">What Chinese character am I?</h2>
+                        <p class="text-lg leading-8 text-dark-700">
+                            I have a frame like a window, but I am not a house. I can stand for the center of a city, the middle of a story, or the idea of "just right." What character am I?
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                        <div class="rounded-[2rem] overflow-hidden shadow-xl bg-white p-8 border border-dark-100">
+                            <p class="text-sm font-bold tracking-[0.35em] uppercase text-dark-500">Hint</p>
+                            <p class="mt-4 text-dark-700 leading-8">
+                                Look for the character that feels balanced and perfectly centered, like something placed exactly in the middle.
+                            </p>
+                        </div>
+                        <div class="rounded-[2rem] overflow-hidden shadow-xl bg-white p-8 border border-dark-100 hidden">
+                            <p class="text-sm font-bold tracking-[0.35em] uppercase text-dark-500">Answer</p>
+                            <div class="mt-4 flex items-center gap-4">
+                                <div class="w-16 h-16 rounded-2xl bg-dark-950 flex items-center justify-center text-lime-500 font-serif text-4xl font-bold">中</div>
+                                <div>
+                                    <h3 class="font-serif text-3xl font-semibold text-dark-950">zhōng</h3>
+                                    <p class="text-dark-700 leading-7">It means middle, center, or inside. It is a simple placeholder character for this riddle page.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 space-y-6 lg:pt-24 hidden">
+                    <div class="rounded-[2rem] overflow-hidden shadow-2xl bg-white border border-dark-100 p-10">
+                        <div class="rounded-[2rem] bg-dark-950 text-white p-8 text-center relative overflow-hidden">
+                            <div class="absolute -top-10 -right-10 w-24 h-24 bg-lime-500/10 rounded-full"></div>
+                            <div class="absolute -bottom-10 -left-10 w-24 h-24 bg-lime-500/5 rounded-full"></div>
+                            <span class="block text-sm font-bold tracking-[0.35em] uppercase text-lime-400">Character Placeholder</span>
+                            <div class="mt-6 font-serif text-[clamp(5rem,16vw,8rem)] font-bold leading-none text-lime-500">中</div>
+                            <p class="mt-4 text-white/75 tracking-[0.22em] uppercase text-xs sm:text-sm">The center / middle / inside</p>
+                        </div>
+                    </div>
+                    <div class="rounded-[2rem] bg-white/70 backdrop-blur border border-dark-100 p-8 shadow-lg space-y-4 hidden">
+                        <h3 class="font-serif text-3xl font-semibold">How to use it</h3>
+                        <p class="text-dark-700 leading-8">
+                            Treat this as a simple riddle card that matches the main site’s typography, spacing, and contrast. Replace the placeholder character and prompt whenever you want a new lantern-riddle entry.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#0b100a] text-white border-t border-lime-500/20 py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                <div class="lg:col-span-4 space-y-3">
+                    <h3 class="font-serif text-3xl font-semibold text-lime-400">also Firefly</h3>
+                    <p class="text-sm text-white/70 leading-7 max-w-sm">The authentic Taiwanese culture experience</p>
+                    <p class="text-sm text-white/70 leading-7">Ann Arbor, MI</p>
+                    <p class="text-sm text-white/70 leading-7">alsofireflycheng@gmail.com
+                        <br>Tel:734-418-8123
+                    </p>
+                </div>
+
+                <div class="lg:col-span-2 space-y-3">
+                    <h4 class="text-sm font-bold tracking-[0.3em] uppercase text-lime-400">Operating Hours</h4>
+                    <p class="text-sm text-white/70 leading-7">
+                        Mon - Fri: 8am - 5pm<br>
+                        Saturday: 9am - 12pm
+                    </p>
+                </div>
+
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="text-sm font-bold tracking-[0.3em] uppercase text-lime-400">Get the Latest News & Updates</h4>
+                    <div class="flex flex-wrap gap-3 text-sm text-white/70">
+                        <a href="#" class="hover:text-lime-400 transition-colors hidden">Store Policy</a>
+                        <a href="#" class="hover:text-lime-400 transition-colors hidden">Shipping & Returns</a>
+                        <a href="#" class="hover:text-lime-400 transition-colors hidden">FAQ</a>
+                    </div>
+                    <div class="flex gap-4 pt-2 text-white/80">
+                        <a href="#" aria-label="Instagram" class="hover:text-lime-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-10 mt-10 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/45">
+                <p>©2016 by also Firefly</p>
+                <p>also Firefly</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
