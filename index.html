@@ -59,7 +59,7 @@
                 #0b100a;
             color: #f5f0e2;
         }
-        section:not(#home):not(#about):not(#contact) {
+        section:not(#home):not(#about):not(#lesson-fee):not(#contact) {
             display: none !important;
         }
         .hidden {
@@ -257,6 +257,80 @@
                         </p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LESSON FEE SECTION -->
+    <section id="lesson-fee" class="relative py-24 bg-dark-950 text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-0 right-0 w-96 h-96 rounded-full bg-lime-500 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-lime-400 blur-3xl"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="inline-block text-sm font-bold tracking-[0.35em] uppercase text-lime-400">語言課定價 · Lesson Pricing</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-semibold leading-tight text-white">Firefly 語言課定價</h2>
+                <p class="text-white/60 text-base leading-7">Choose the format that fits your learning style and goals.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+                <!-- Tier 1: Conversation -->
+                <div class="rounded-3xl bg-white/5 border border-white/10 p-8 flex flex-col hover:border-lime-500/50 transition-colors">
+                    <div class="w-12 h-12 rounded-2xl bg-lime-500/15 flex items-center justify-center text-lime-400 text-xl mb-6">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">Conversation</h3>
+                    <div class="flex items-baseline gap-1 mb-4">
+                        <span class="text-3xl font-extrabold text-lime-400">$30</span>
+                        <span class="text-sm text-white/40">/ hr</span>
+                    </div>
+                    <p class="text-white/60 text-sm leading-7 flex-grow">
+                        Pure conversation with no textbook required. I will prepare a dedicated topic for each session, and you will receive a summary handout on the same day after class.
+                    </p>
+                    <a href="#contact" class="mt-8 inline-flex items-center justify-center border border-lime-500/50 text-lime-400 hover:bg-lime-500 hover:text-dark-950 font-semibold text-sm px-6 py-3 rounded-full transition-all">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Tier 2: Textbook-aligned (highlighted) -->
+                <div class="rounded-3xl bg-lime-500 p-8 flex flex-col relative shadow-2xl shadow-lime-500/20">
+                    <span class="absolute top-4 right-4 bg-dark-950 text-lime-400 text-[10px] uppercase font-extrabold tracking-widest px-3 py-1 rounded-full">Most Popular</span>
+                    <div class="w-12 h-12 rounded-2xl bg-dark-950/20 flex items-center justify-center text-dark-950 text-xl mb-6">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-950 mb-1">Textbook-Aligned</h3>
+                    <div class="flex items-baseline gap-1 mb-4">
+                        <span class="text-3xl font-extrabold text-dark-950">$35</span>
+                        <span class="text-sm text-dark-800/60">/ hr</span>
+                    </div>
+                    <p class="text-dark-950/75 text-sm leading-7 flex-grow">
+                        Standard structured lessons following a textbook curriculum. This rate includes the textbook/materials and comprehensive homework feedback and grading.
+                    </p>
+                    <a href="#contact" class="mt-8 inline-flex items-center justify-center bg-dark-950 text-lime-400 hover:bg-dark-800 font-semibold text-sm px-6 py-3 rounded-full transition-all">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Tier 3: Fully Customized -->
+                <div class="rounded-3xl bg-white/5 border border-white/10 p-8 flex flex-col hover:border-lime-500/50 transition-colors">
+                    <div class="w-12 h-12 rounded-2xl bg-lime-500/15 flex items-center justify-center text-lime-400 text-xl mb-6">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">Fully Customized</h3>
+                    <div class="flex items-baseline gap-1 mb-4">
+                        <span class="text-3xl font-extrabold text-lime-400">$50</span>
+                        <span class="text-sm text-white/40">/ hr</span>
+                    </div>
+                    <p class="text-white/60 text-sm leading-7 flex-grow">
+                        A tailored experience featuring a personalized textbook/curriculum designed around your specific goals. Includes everything above, plus dedicated review resources and custom study plans.
+                    </p>
+                    <a href="#contact" class="mt-8 inline-flex items-center justify-center border border-lime-500/50 text-lime-400 hover:bg-lime-500 hover:text-dark-950 font-semibold text-sm px-6 py-3 rounded-full transition-all">
+                        Get Started
+                    </a>
+                </div>
+
             </div>
         </div>
     </section>
